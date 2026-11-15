@@ -42,49 +42,48 @@ one-step-off best checkpoint) and logs every hyperparameter per run.
 
 | Test set: 80 unseen contracts, same prompt | Base (zero-shot) | LoRA r16 | LoRA r4 |
 |---|---|---|---|
-| **Clause F1, contract level** (headline) | 0.423 | **0.738** | TBD |
-| Header F1, contract level | 0.529 | **0.832** | TBD |
-| Clause F1, chunk level | 0.442 | **0.743** | TBD |
-| **Held-out categories F1** (never trained) | TBD | TBD | TBD |
-| Clause precision / recall | 0.33 / 0.59 | 0.76 / 0.72 | TBD |
-| False alarms (quotes where there is no clause) | 5.9% | **0.8%** | TBD |
-| Verbatim quotes · strict JSON | 89.6% · 99.5% | 99.3% · 99.9% | TBD |
-| Trainable params · best validation loss | – | 33.0M · 0.0252 | 8.3M · TBD |
+| **Clause F1, contract level** (headline) | 0.423 | **0.738** | 0.721 |
+| Header F1, contract level | 0.529 | 0.832 | **0.837** |
+| Clause F1, chunk level | 0.442 | **0.743** | 0.726 |
+| **Held-out categories F1** (never trained) | 0.274 | **0.484** | 0.470 |
+| Clause precision / recall | 0.33 / 0.59 | 0.76 / 0.72 | 0.75 / 0.69 |
+| False alarms (quotes where there is no clause) | 5.9% | **0.8%** | **0.8%** |
+| Verbatim quotes · strict JSON | 89.6% · 99.5% | 99.3% · 99.9% | 98.9% · 99.8% |
+| Trainable params · best validation loss | – | 33.0M · 0.0252 | 8.3M · 0.0278 |
 
-The largest gains are on judgement-heavy clauses: Uncapped Liability 0.04 → 0.60, Termination For Convenience
-0.34 → 0.77, Cap On Liability 0.37 → 0.75.
+The largest gains are on judgement-heavy clauses: Uncapped Liability 0.04 → 0.60, Cap On Liability 0.37 → 0.75.
+**Rank ablation:** r4 keeps 95% of r16's clause gain with ¼ of the parameters; validation loss agrees, so r16 stays.
 
 **Qualitative example (Minimum Commitment, same prompt).** Base: *"Shipper guarantees that during each Contract Year,
 Shipper will meet its Quarterly Volume Commitment"*. Fine-tuned: the same sentence plus *"…or, in the event it fails to
 do so, shall remit to MPL the Quarterly Deficiency Payment pursuant to Section 3.5."*, which is exactly the gold span.
 The base model drops the financial consequence, which is the part a reviewer needs.
 
-**Learned or memorized?** The test contracts are unseen, and category subsets are shuffled, so there is no fixed
-schema to memorize. The direct test is the held-out categories: F1 that holds or rises over the base model means the
-model learned to follow definitions. Result: TBD.
+**Learned or memorized?** Test contracts are unseen and category subsets are shuffled, so there is no fixed schema to
+memorize. The direct test is the 3 held-out categories (same template, CUAD definitions): F1 rises from 0.27 to 0.48.
+The gain is precision (0.18 → 0.44; false alarms on 40% → 5% of contracts), not recall (0.59 → 0.54): fine-tuning
+taught *when to abstain*; finding unseen clause types still rests on the base model (trained categories: 0.74).
 
 **Where it fails:**
 
 - **Misses, not false alarms.** Recall is lowest where drafting varies most: Exclusivity 0.46, Minimum Commitment 0.51,
   Change Of Control 0.55.
-- **Span convention inflates the base model's gap.** `dated as of January 29, 2007 (the "Effective Date")` vs gold
-  `January 29, 2007` is acceptable to a lawyer, but Jaccard scores it as a miss.
-- **CUAD label noise.** Role aliases ("Company") are labelled as Parties in only 37% of contracts, which caps Parties F1.
-- **Verbatim but wrong.** `"on the date first above written"` returned as the Agreement Date passes the hallucination
-  check, so that check is necessary but not sufficient.
-- **Chunk-local view.** "As defined in Section 2" cannot be resolved when Section 2 is in another chunk.
+- **Span convention inflates the base model's gap.** `dated as of January 29, 2007` vs gold `January 29, 2007` is
+  fine for a lawyer, but a Jaccard miss.
+- **CUAD label noise.** Role aliases ("Company") are labelled as Parties in only 37% of contracts.
+- **Verbatim but wrong.** `"on the date first above written"` as the Agreement Date passes the hallucination check.
+- **Chunk-local view.** "As defined in Section 2" cannot be resolved from another chunk.
 
 ## 4. Production & Limitations
 
 - **Hallucination control (built).** Every quote must be a verbatim substring of the input, otherwise it is dropped
   and flagged (0.7% of fine-tuned quotes vs 10.4% for the base model, F1 unchanged). JSON is schema-checked, `[]`
   lets the model abstain, and flagged outputs go to human review.
-- **Catastrophic forgetting.** Adapter on vs off on general prompts: TBD. The adapter is detachable, so general traffic
-  is served by the unmodified base model.
-- **Deployment.** An 8 GB base model plus a 132 MB adapter. vLLM multi-LoRA serves several task adapters on one base
-  model, and the chunks of a contract run as one parallel batch (≈ 4.6 s per chunk on an M5 Pro laptop).
-- **Limitation.** CUAD is US public-company contracts in English only. Private supplier paper, scanned PDFs (OCR),
-  other jurisdictions and untrained categories are untested. A pilot on in-house contracts with lawyer review is
-  needed before relying on the 0.74 F1.
+- **Catastrophic forgetting.** Adapter on vs off on general prompts: TBD. The adapter is detachable, so general
+  traffic uses the unmodified base model.
+- **Deployment.** An 8 GB base model plus a 132 MB adapter; vLLM multi-LoRA serves many adapters on one base, and a
+  contract's chunks run as one parallel batch (≈ 4.6 s per chunk on a laptop).
+- **Limitation.** CUAD is US public-company contracts in English. Private supplier paper, scanned PDFs and other
+  jurisdictions are untested, so a lawyer-reviewed pilot on in-house contracts must come before relying on 0.74 F1.
 
 *Code: github.com/alokraj01/slm-finetuning · Data: CUAD v1 (Hendrycks et al., 2021), CC BY 4.0*

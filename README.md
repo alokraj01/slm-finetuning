@@ -98,17 +98,24 @@ predictions.
 Test set: 80 unseen contracts. The metric is span F1 at Jaccard ≥ 0.5. The headline is contract level: chunk outputs are
 merged per contract before scoring.
 
-| | Base Qwen3-4B | LoRA r16 |
-|---|---|---|
-| Clause F1, contract level | 0.423 | **0.738** |
-| Header F1, contract level | 0.529 | **0.832** |
-| Clause F1, chunk level | 0.442 | **0.743** |
-| False alarms (quotes where there is no clause) | 5.9% | **0.8%** |
-| Strict JSON / verbatim quotes | 99.5% / 89.6% | 99.9% / 99.3% |
-| Held-out categories F1 (never trained) | TBD | TBD |
+| | Base Qwen3-4B | LoRA r16 (main) | LoRA r4 (ablation) |
+|---|---|---|---|
+| Clause F1, contract level | 0.423 | **0.738** | 0.721 |
+| Header F1, contract level | 0.529 | 0.832 | **0.837** |
+| Clause F1, chunk level | 0.442 | **0.743** | 0.726 |
+| **Held-out categories F1** (never trained) | 0.274 | **0.484** | 0.470 |
+| False alarms (quotes where there is no clause) | 5.9% | **0.8%** | **0.8%** |
+| Strict JSON / verbatim quotes | 99.5% / 89.6% | 99.9% / 99.3% | 99.8% / 98.9% |
+| Trainable params / best val loss / train time | – | 33.0M / 0.0252 / 4.7 h | 8.3M / 0.0278 / 5.0 h |
 
-The held-out categories and the r4 ablation are still running. Full tables, base-vs-fine-tuned examples and the error
-analysis are in `notebooks/04_evaluate.ipynb` and the write-up.
+- **Fine-tuning gain:** about +0.31 F1 on trained categories, with 7× fewer false alarms.
+- **Learned vs memorized:** on the 3 held-out categories, which were never requested in training, F1 rises
+  0.27 → 0.48. The gain comes from precision (false alarms on 40% → 5% of contracts), so the model learned to follow
+  definitions and to abstain.
+- **Rank:** r4 keeps 95% of r16's gain with a quarter of the parameters, and validation loss ranks the two the same
+  way. r16 was fixed before the test runs; the ablation is reported only, not used to pick a model.
+
+Full tables, base-vs-fine-tuned examples and the error analysis are in `notebooks/04_evaluate.ipynb` and the write-up.
 
 ## Citation
 
