@@ -1,0 +1,46 @@
+{
+ "train": [
+  "Document Name",
+  "Parties",
+  "Agreement Date",
+  "Effective Date",
+  "Expiration Date",
+  "Renewal Term",
+  "Notice Period To Terminate Renewal",
+  "Governing Law",
+  "Termination For Convenience",
+  "Anti-Assignment",
+  "Change Of Control",
+  "Cap On Liability",
+  "Uncapped Liability",
+  "Minimum Commitment",
+  "Exclusivity",
+  "Audit Rights"
+ ],
+ "heldout": [
+  "Insurance",
+  "Post-Termination Services",
+  "Non-Compete"
+ ],
+ "definitions": {
+  "Document Name": "The name of the contract",
+  "Parties": "The two or more parties who signed the contract",
+  "Agreement Date": "The date of the contract",
+  "Effective Date": "The date when the contract is effective",
+  "Expiration Date": "On what date will the contract's initial term expire?",
+  "Renewal Term": "What is the renewal term after the initial term expires? This includes automatic extensions and unilateral extensions with prior notice.",
+  "Notice Period To Terminate Renewal": "What is the notice period required to terminate renewal?",
+  "Governing Law": "Which state/country's law governs the interpretation of the contract?",
+  "Termination For Convenience": "Can a party terminate this contract without cause (solely by giving a notice and allowing a waiting period to expire)?",
+  "Anti-Assignment": "Is consent or notice required of a party if the contract is assigned to a third party?",
+  "Change Of Control": "Does one party have the right to terminate or is consent or notice required of the counterparty if such party undergoes a change of control, such as a merger, stock sale, transfer of all or substantially all of its assets or business, or assignment by operation of law?",
+  "Cap On Liability": "Does the contract include a cap on liability upon the breach of a party’s obligation? This includes time limitation for the counterparty to bring claims or maximum amount for recovery.",
+  "Uncapped Liability": "Is a party’s liability uncapped upon the breach of its obligation in the contract? This also includes uncap liability for a particular type of breach such as IP infringement or breach of confidentiality obligation.",
+  "Minimum Commitment": "Is there a minimum order size or minimum amount or units per-time period that one party must buy from the counterparty under the contract?",
+  "Exclusivity": "Is there an exclusive dealing commitment with the counterparty? This includes a commitment to procure all “requirements” from one party of certain technology, goods, or services or a prohibition on licensing or selling technology, goods or services to third parties, or a prohibition on collaborating or working with other parties), whether during the contract or after the contract ends (or both).",
+  "Audit Rights": "Does a party have the right to audit the books, records, or physical locations of the counterparty to ensure compliance with the contract?",
+  "Insurance": "Is there a requirement for insurance that must be maintained by one party for the benefit of the counterparty?",
+  "Post-Termination Services": "Is a party subject to obligations after the termination or expiration of a contract, including any post-termination transition, payment, transfer of IP, wind-down, last-buy, or similar commitments?",
+  "Non-Compete": "Is there a restriction on the ability of a party to compete with the counterparty or operate in a certain geography or business or technology sector?"
+ }
+}

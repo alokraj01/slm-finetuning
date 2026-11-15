@@ -1,0 +1,171 @@
+{
+ "params": {
+  "size": 6000,
+  "overlap": 800,
+  "neg_keep": 0.5,
+  "k_min": 4,
+  "val": 0.15,
+  "test": 0.15,
+  "seed": 42,
+  "out": "/Users/alok/Documents/01_projects/11_self/08_challenge_ava/02_slm_finetuning/data/processed/cuad_v1"
+ },
+ "contracts": {
+  "test": 80,
+  "val": 80,
+  "train": 350
+ },
+ "files": {
+  "train.jsonl": 2997,
+  "valid.jsonl": 649,
+  "train_meta.jsonl": 2997,
+  "valid_meta.jsonl": 649,
+  "eval/val_trained.jsonl": 834,
+  "eval/val_heldout.jsonl": 834,
+  "eval/test_trained.jsonl": 822,
+  "eval/test_heldout.jsonl": 822,
+  "eval/val_gold_contract.jsonl": 80,
+  "eval/test_gold_contract.jsonl": 80
+ },
+ "train_sha256_16": "2cedaea7f8f74e2d",
+ "whitespace_normalization": {
+  "orig_chars": 26807133,
+  "norm_chars": 25801624,
+  "saved": 0.0375
+ },
+ "chunks": {
+  "total": 5668,
+  "chunks_train": 4012,
+  "chunks_test": 822,
+  "chunks_val": 834,
+  "median_chars": 5757,
+  "max_chars": 6000
+ },
+ "trained_spans_never_whole_in_any_chunk": "2/8730",
+ "neg_chunks_dropped": {
+  "neg_chunks_dropped_train": 1015,
+  "neg_chunks_dropped_val": 185
+ },
+ "cut_category_exclusions": {
+  "cut_exclusions_train": 33,
+  "cut_exclusions_val": 11
+ },
+ "train_examples": {
+  "n": 2997,
+  "all_empty": 1028,
+  "median_prompt_chars": 7594,
+  "max_prompt_chars": 8842,
+  "approx_median_prompt_tokens": 1898,
+  "approx_max_total_tokens": 3400,
+  "median_target_chars": 477
+ },
+ "train_per_category": {
+  "Document Name": {
+   "requested": 1947,
+   "positive": 359
+  },
+  "Parties": {
+   "requested": 1933,
+   "positive": 386
+  },
+  "Agreement Date": {
+   "requested": 1936,
+   "positive": 331
+  },
+  "Effective Date": {
+   "requested": 1930,
+   "positive": 310
+  },
+  "Expiration Date": {
+   "requested": 1939,
+   "positive": 360
+  },
+  "Renewal Term": {
+   "requested": 1885,
+   "positive": 144
+  },
+  "Notice Period To Terminate Renewal": {
+   "requested": 1818,
+   "positive": 92
+  },
+  "Governing Law": {
+   "requested": 1957,
+   "positive": 382
+  },
+  "Termination For Convenience": {
+   "requested": 1884,
+   "positive": 170
+  },
+  "Anti-Assignment": {
+   "requested": 1914,
+   "positive": 375
+  },
+  "Change Of Control": {
+   "requested": 1841,
+   "positive": 129
+  },
+  "Cap On Liability": {
+   "requested": 1912,
+   "positive": 366
+  },
+  "Uncapped Liability": {
+   "requested": 1803,
+   "positive": 99
+  },
+  "Minimum Commitment": {
+   "requested": 1817,
+   "positive": 209
+  },
+  "Exclusivity": {
+   "requested": 1868,
+   "positive": 208
+  },
+  "Audit Rights": {
+   "requested": 1839,
+   "positive": 284
+  }
+ },
+ "contract_level_positives": {
+  "val": {
+   "Document Name": 80,
+   "Parties": 80,
+   "Agreement Date": 78,
+   "Effective Date": 63,
+   "Expiration Date": 64,
+   "Renewal Term": 30,
+   "Notice Period To Terminate Renewal": 23,
+   "Governing Law": 67,
+   "Termination For Convenience": 23,
+   "Anti-Assignment": 58,
+   "Change Of Control": 21,
+   "Cap On Liability": 37,
+   "Uncapped Liability": 16,
+   "Minimum Commitment": 31,
+   "Exclusivity": 26,
+   "Audit Rights": 37,
+   "Insurance": 25,
+   "Post-Termination Services": 30,
+   "Non-Compete": 17
+  },
+  "test": {
+   "Document Name": 80,
+   "Parties": 80,
+   "Agreement Date": 69,
+   "Effective Date": 58,
+   "Expiration Date": 64,
+   "Renewal Term": 28,
+   "Notice Period To Terminate Renewal": 15,
+   "Governing Law": 67,
+   "Termination For Convenience": 25,
+   "Anti-Assignment": 53,
+   "Change Of Control": 20,
+   "Cap On Liability": 41,
+   "Uncapped Liability": 15,
+   "Minimum Commitment": 27,
+   "Exclusivity": 28,
+   "Audit Rights": 32,
+   "Insurance": 28,
+   "Post-Termination Services": 24,
+   "Non-Compete": 21
+  }
+ }
+}
