@@ -1,0 +1,34 @@
+{
+ "run_name": "qwen3-4b-lora-r4-v1",
+ "started": "2026-11-15 12:12:53",
+ "git_commit": "4578b7d",
+ "python": "3.12.13",
+ "mlx": "0.32.4",
+ "mlx_lm": "0.32.2",
+ "platform": "macOS-26.5-arm64-arm-64bit",
+ "device": "Apple M5 Pro",
+ "memory_gb": 48.0,
+ "train_sha256_16": "2cedaea7f8f74e2d",
+ "valid_subset_sha256_16": "1c42919165cc1690",
+ "lengths": {
+  "train": {
+   "n": 2997,
+   "max": 5389,
+   "mean": 1736.3,
+   "total_tokens": 5203750
+  },
+  "valid": {
+   "n": 96,
+   "max": 2477,
+   "mean": 1721.0,
+   "total_tokens": 165220
+  }
+ },
+ "train_seconds": 17936.9,
+ "peak_memory_gb": 20.94,
+ "best": {
+  "iteration": 1499,
+  "val_loss": 0.027837499976158142
+ },
+ "finished": "2026-11-15 17:11:50"
+}
