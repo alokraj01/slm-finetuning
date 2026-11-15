@@ -1,0 +1,192 @@
+Loading Qwen/Qwen3-4B-Instruct-2507 ...
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 1888.65it/s]
+lengths OK: {'train': {'n': 2997, 'max': 5389, 'mean': 1736.3, 'total_tokens': 5203750}, 'valid': {'n': 96, 'max': 2477, 'mean': 1721.0, 'total_tokens': 165220}}
+[34m╭─[0m[34m [0m[1;35mmlx_lm.lora[0m[34m [0m[34m───────────────────────────────────────────────────────────────────────────────────────────────────────[0m[34m─╮[0m
+[34m│[0m    [39mmodel        [0m   [1mQwen/Qwen3-4B-Instruct-2507[0m                                                                       [34m│[0m
+[34m│[0m    [39mtype         [0m   [1mlora · -1 layers · rank 16[0m                                                                        [34m│[0m
+[34m│[0m    [39mdataset      [0m                                                                                                     [34m│[0m
+[34m│[0m  [1m/Users/alok/Documents/01_projects/11_self/08_challenge_ava/02_slm_finetuning/runs/qwen3-4b-lora-r16-v2/data[0m         [34m│[0m
+[34m│[0m    [39moptimizer    [0m   [1madamw · lr 1.0e-04[0m                                                                                [34m│[0m
+[34m│[0m    [39mbatch · iters[0m   [1m2 · 1,500[0m                                                                                         [34m│[0m
+[34m│[0m    [39mmax seq      [0m   [1m5,632[0m                                                                                             [34m│[0m
+[34m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+Trainable parameters: 0.821% (33.030M/4022.468M)
+  [1miter   train_loss     tok/s     tokens[0m
+  [38;5;244m   1[0m    [1;35mval[0m [1m0.638[0m    [38;5;244m165.95s[0m
+[val] it=0 val_loss=0.6380
+  [38;5;244m  20[0m    [1;32m0.681 ▼[0m    [1m   29[0m    [38;5;244m  6.3k[0m
+[train] it=20 loss=0.6806 lr=2.18e-05 tok/s=29 peak_mem=16.5GB
+  [38;5;244m  40[0m    [1;32m0.149 ▼[0m    [1m   30[0m    [38;5;244m 12.8k[0m
+[train] it=40 loss=0.1493 lr=4.79e-05 tok/s=30 peak_mem=16.5GB
+  [38;5;244m  60[0m    [1;32m0.090 ▼[0m    [1m   31[0m    [38;5;244m 19.7k[0m
+[train] it=60 loss=0.0898 lr=7.39e-05 tok/s=31 peak_mem=16.5GB
+  [38;5;244m  80[0m    [1;32m0.075 ▼[0m    [1m   31[0m    [38;5;244m 26.4k[0m
+[train] it=80 loss=0.0752 lr=1.00e-04 tok/s=31 peak_mem=16.5GB
+  [38;5;244m 100[0m    [1;32m0.038 ▼[0m    [1m   27[0m    [38;5;244m 32.3k[0m
+[train] it=100 loss=0.0377 lr=1.00e-04 tok/s=27 peak_mem=16.5GB
+  [38;5;244m 120[0m    [1;33m0.048 ▲[0m    [1m   30[0m    [38;5;244m 38.8k[0m
+[train] it=120 loss=0.0484 lr=9.99e-05 tok/s=30 peak_mem=16.6GB
+  [38;5;244m 140[0m    [1;32m0.037 ▼[0m    [1m   26[0m    [38;5;244m 44.1k[0m
+[train] it=140 loss=0.0373 lr=9.97e-05 tok/s=26 peak_mem=16.6GB
+  [38;5;244m 160[0m    [1;33m0.070 ▲[0m    [1m   28[0m    [38;5;244m 50.3k[0m
+[train] it=160 loss=0.0701 lr=9.94e-05 tok/s=28 peak_mem=16.6GB
+  [38;5;244m 180[0m    [1;32m0.046 ▼[0m    [1m   30[0m    [38;5;244m 57.0k[0m
+[train] it=180 loss=0.0459 lr=9.90e-05 tok/s=30 peak_mem=16.6GB
+  [38;5;244m 200[0m    [1;32m0.031 ▼[0m    [1m   28[0m    [38;5;244m 63.0k[0m
+[train] it=200 loss=0.0310 lr=9.85e-05 tok/s=28 peak_mem=18.5GB
+  [38;5;244m 220[0m    [1;32m0.029 ▼[0m    [1m   26[0m    [38;5;244m 68.4k[0m
+[train] it=220 loss=0.0288 lr=9.80e-05 tok/s=26 peak_mem=18.5GB
+  [38;5;244m 240[0m    [1;33m0.031 ▲[0m    [1m   38[0m    [38;5;244m 76.7k[0m
+[train] it=240 loss=0.0315 lr=9.74e-05 tok/s=38 peak_mem=18.5GB
+  [38;5;244m 250[0m    [1;35mval[0m [1m0.035[0m    [38;5;244m159.32s[0m
+[val] it=249 val_loss=0.0346
+[best] saved weights from iteration 249 (val_loss=0.0346)
+  [1;32msave[0m  [38;5;244m0000250_adapters.safetensors[0m
+  [38;5;244m 260[0m    [1;33m0.046 ▲[0m    [1m   33[0m    [38;5;244m 83.5k[0m
+[train] it=260 loss=0.0460 lr=9.67e-05 tok/s=33 peak_mem=18.5GB
+  [38;5;244m 280[0m    [1;32m0.038 ▼[0m    [1m   32[0m    [38;5;244m 90.2k[0m
+[train] it=280 loss=0.0377 lr=9.59e-05 tok/s=32 peak_mem=18.5GB
+  [38;5;244m 300[0m    [1;32m0.031 ▼[0m    [1m   31[0m    [38;5;244m 96.8k[0m
+[train] it=300 loss=0.0309 lr=9.50e-05 tok/s=31 peak_mem=18.5GB
+  [38;5;244m 320[0m    [1;32m0.027 ▼[0m    [1m   36[0m    [38;5;244m104.9k[0m
+[train] it=320 loss=0.0269 lr=9.40e-05 tok/s=36 peak_mem=18.5GB
+  [38;5;244m 340[0m    [1;33m0.040 ▲[0m    [1m   31[0m    [38;5;244m111.5k[0m
+[train] it=340 loss=0.0395 lr=9.30e-05 tok/s=31 peak_mem=18.5GB
+  [38;5;244m 360[0m    [1;32m0.025 ▼[0m    [1m   25[0m    [38;5;244m116.8k[0m
+[train] it=360 loss=0.0252 lr=9.19e-05 tok/s=25 peak_mem=18.5GB
+  [38;5;244m 380[0m    [1;33m0.042 ▲[0m    [1m   29[0m    [38;5;244m122.7k[0m
+[train] it=380 loss=0.0419 lr=9.07e-05 tok/s=29 peak_mem=18.5GB
+  [38;5;244m 400[0m    [1;33m0.056 ▲[0m    [1m   33[0m    [38;5;244m130.0k[0m
+[train] it=400 loss=0.0557 lr=8.95e-05 tok/s=33 peak_mem=18.5GB
+  [38;5;244m 420[0m    [1;32m0.037 ▼[0m    [1m   26[0m    [38;5;244m135.3k[0m
+[train] it=420 loss=0.0371 lr=8.82e-05 tok/s=26 peak_mem=18.5GB
+  [38;5;244m 440[0m    [1;33m0.037 ▲[0m    [1m   27[0m    [38;5;244m141.1k[0m
+[train] it=440 loss=0.0372 lr=8.68e-05 tok/s=27 peak_mem=18.5GB
+  [38;5;244m 460[0m    [1;33m0.039 ▲[0m    [1m   34[0m    [38;5;244m148.6k[0m
+[train] it=460 loss=0.0390 lr=8.54e-05 tok/s=34 peak_mem=18.5GB
+  [38;5;244m 480[0m    [1;32m0.029 ▼[0m    [1m   32[0m    [38;5;244m155.3k[0m
+[train] it=480 loss=0.0292 lr=8.39e-05 tok/s=32 peak_mem=18.5GB
+  [38;5;244m 500[0m    [1;35mval[0m [1m0.031[0m    [38;5;244m158.81s[0m
+[val] it=499 val_loss=0.0314
+[best] saved weights from iteration 499 (val_loss=0.0314)
+  [38;5;244m 500[0m    [1;33m0.049 ▲[0m    [1m   29[0m    [38;5;244m161.1k[0m
+[train] it=500 loss=0.0485 lr=8.23e-05 tok/s=29 peak_mem=18.5GB
+  [1;32msave[0m  [38;5;244m0000500_adapters.safetensors[0m
+  [38;5;244m 520[0m    [1;32m0.038 ▼[0m    [1m   31[0m    [38;5;244m167.5k[0m
+[train] it=520 loss=0.0384 lr=8.07e-05 tok/s=31 peak_mem=18.5GB
+  [38;5;244m 540[0m    [1;32m0.034 ▼[0m    [1m   33[0m    [38;5;244m174.4k[0m
+[train] it=540 loss=0.0337 lr=7.91e-05 tok/s=33 peak_mem=18.5GB
+  [38;5;244m 560[0m    [1;32m0.027 ▼[0m    [1m   33[0m    [38;5;244m181.1k[0m
+[train] it=560 loss=0.0273 lr=7.74e-05 tok/s=33 peak_mem=18.5GB
+  [38;5;244m 580[0m    [1;33m0.032 ▲[0m    [1m   33[0m    [38;5;244m187.8k[0m
+[train] it=580 loss=0.0325 lr=7.56e-05 tok/s=33 peak_mem=18.5GB
+  [38;5;244m 600[0m    [1;32m0.030 ▼[0m    [1m   35[0m    [38;5;244m194.5k[0m
+[train] it=600 loss=0.0298 lr=7.39e-05 tok/s=35 peak_mem=18.5GB
+  [38;5;244m 620[0m    [1;32m0.027 ▼[0m    [1m   33[0m    [38;5;244m201.8k[0m
+[train] it=620 loss=0.0274 lr=7.20e-05 tok/s=33 peak_mem=18.5GB
+  [38;5;244m 640[0m    [1;33m0.034 ▲[0m    [1m   30[0m    [38;5;244m208.0k[0m
+[train] it=640 loss=0.0341 lr=7.02e-05 tok/s=30 peak_mem=18.5GB
+  [38;5;244m 660[0m    [1;32m0.025 ▼[0m    [1m   27[0m    [38;5;244m213.8k[0m
+[train] it=660 loss=0.0247 lr=6.83e-05 tok/s=27 peak_mem=18.5GB
+  [38;5;244m 680[0m    [1;33m0.034 ▲[0m    [1m   26[0m    [38;5;244m219.2k[0m
+[train] it=680 loss=0.0339 lr=6.64e-05 tok/s=26 peak_mem=18.5GB
+  [38;5;244m 700[0m    [1;33m0.042 ▲[0m    [1m   31[0m    [38;5;244m225.2k[0m
+[train] it=700 loss=0.0415 lr=6.45e-05 tok/s=31 peak_mem=18.5GB
+  [38;5;244m 720[0m    [1;32m0.030 ▼[0m    [1m   26[0m    [38;5;244m230.7k[0m
+[train] it=720 loss=0.0302 lr=6.25e-05 tok/s=26 peak_mem=18.5GB
+  [38;5;244m 740[0m    [1;33m0.036 ▲[0m    [1m   26[0m    [38;5;244m236.6k[0m
+[train] it=740 loss=0.0359 lr=6.05e-05 tok/s=26 peak_mem=20.5GB
+  [38;5;244m 750[0m    [1;35mval[0m [1m0.030[0m    [38;5;244m158.70s[0m
+[val] it=749 val_loss=0.0297
+[best] saved weights from iteration 749 (val_loss=0.0297)
+  [1;32msave[0m  [38;5;244m0000750_adapters.safetensors[0m
+  [38;5;244m 760[0m    [1;32m0.028 ▼[0m    [1m   27[0m    [38;5;244m242.1k[0m
+[train] it=760 loss=0.0281 lr=5.86e-05 tok/s=27 peak_mem=20.5GB
+  [38;5;244m 780[0m    [1;32m0.021 ▼[0m    [1m   24[0m    [38;5;244m247.3k[0m
+[train] it=780 loss=0.0206 lr=5.66e-05 tok/s=24 peak_mem=21.9GB
+  [38;5;244m 800[0m    [1;33m0.023 ▲[0m    [1m   31[0m    [38;5;244m253.9k[0m
+[train] it=800 loss=0.0230 lr=5.46e-05 tok/s=31 peak_mem=21.9GB
+  [38;5;244m 820[0m    [1;32m0.021 ▼[0m    [1m   35[0m    [38;5;244m261.0k[0m
+[train] it=820 loss=0.0205 lr=5.26e-05 tok/s=35 peak_mem=21.9GB
+  [38;5;244m 840[0m    [1;32m0.019 ▼[0m    [1m   30[0m    [38;5;244m267.0k[0m
+[train] it=840 loss=0.0193 lr=5.06e-05 tok/s=30 peak_mem=21.9GB
+  [38;5;244m 860[0m    [1;33m0.043 ▲[0m    [1m   30[0m    [38;5;244m273.0k[0m
+[train] it=860 loss=0.0430 lr=4.87e-05 tok/s=30 peak_mem=21.9GB
+  [38;5;244m 880[0m    [1;32m0.034 ▼[0m    [1m   32[0m    [38;5;244m280.0k[0m
+[train] it=880 loss=0.0344 lr=4.67e-05 tok/s=32 peak_mem=21.9GB
+  [38;5;244m 900[0m    [1;32m0.022 ▼[0m    [1m   28[0m    [38;5;244m285.8k[0m
+[train] it=900 loss=0.0218 lr=4.48e-05 tok/s=28 peak_mem=21.9GB
+  [38;5;244m 920[0m    [1;32m0.018 ▼[0m    [1m   37[0m    [38;5;244m294.0k[0m
+[train] it=920 loss=0.0177 lr=4.28e-05 tok/s=37 peak_mem=21.9GB
+  [38;5;244m 940[0m    [1;33m0.037 ▲[0m    [1m   27[0m    [38;5;244m300.7k[0m
+[train] it=940 loss=0.0375 lr=4.09e-05 tok/s=27 peak_mem=21.9GB
+  [38;5;244m 960[0m    [1;32m0.019 ▼[0m    [1m   34[0m    [38;5;244m307.9k[0m
+[train] it=960 loss=0.0193 lr=3.91e-05 tok/s=34 peak_mem=21.9GB
+  [38;5;244m 980[0m    [1;33m0.037 ▲[0m    [1m   33[0m    [38;5;244m314.8k[0m
+[train] it=980 loss=0.0375 lr=3.72e-05 tok/s=33 peak_mem=21.9GB
+  [38;5;244m1000[0m    [1;35mval[0m [1m0.027[0m    [38;5;244m158.45s[0m
+[val] it=999 val_loss=0.0268
+[best] saved weights from iteration 999 (val_loss=0.0268)
+  [38;5;244m1000[0m    [1;32m0.021 ▼[0m    [1m   29[0m    [38;5;244m320.6k[0m
+[train] it=1000 loss=0.0213 lr=3.54e-05 tok/s=29 peak_mem=21.9GB
+  [1;32msave[0m  [38;5;244m0001000_adapters.safetensors[0m
+  [38;5;244m1020[0m    [1;32m0.018 ▼[0m    [1m   31[0m    [38;5;244m326.9k[0m
+[train] it=1020 loss=0.0181 lr=3.37e-05 tok/s=31 peak_mem=21.9GB
+  [38;5;244m1040[0m    [1;33m0.025 ▲[0m    [1m   25[0m    [38;5;244m332.6k[0m
+[train] it=1040 loss=0.0248 lr=3.19e-05 tok/s=25 peak_mem=23.0GB
+  [38;5;244m1060[0m    [1;32m0.017 ▼[0m    [1m   31[0m    [38;5;244m339.2k[0m
+[train] it=1060 loss=0.0169 lr=3.02e-05 tok/s=31 peak_mem=23.0GB
+  [38;5;244m1080[0m    [1;33m0.023 ▲[0m    [1m   33[0m    [38;5;244m345.6k[0m
+[train] it=1080 loss=0.0230 lr=2.86e-05 tok/s=33 peak_mem=23.0GB
+  [38;5;244m1100[0m    [1;33m0.029 ▲[0m    [1m   30[0m    [38;5;244m352.0k[0m
+[train] it=1100 loss=0.0286 lr=2.70e-05 tok/s=30 peak_mem=23.0GB
+  [38;5;244m1120[0m    [1;33m0.034 ▲[0m    [1m   32[0m    [38;5;244m358.6k[0m
+[train] it=1120 loss=0.0341 lr=2.55e-05 tok/s=32 peak_mem=23.0GB
+  [38;5;244m1140[0m    [1;32m0.019 ▼[0m    [1m   25[0m    [38;5;244m364.1k[0m
+[train] it=1140 loss=0.0192 lr=2.40e-05 tok/s=25 peak_mem=23.0GB
+  [38;5;244m1160[0m    [1;32m0.015 ▼[0m    [1m   28[0m    [38;5;244m369.7k[0m
+[train] it=1160 loss=0.0150 lr=2.26e-05 tok/s=28 peak_mem=23.0GB
+  [38;5;244m1180[0m    [1;33m0.027 ▲[0m    [1m   26[0m    [38;5;244m375.2k[0m
+[train] it=1180 loss=0.0272 lr=2.13e-05 tok/s=26 peak_mem=23.0GB
+  [38;5;244m1200[0m    [1;32m0.026 ▼[0m    [1m   25[0m    [38;5;244m380.6k[0m
+[train] it=1200 loss=0.0256 lr=2.00e-05 tok/s=25 peak_mem=23.0GB
+  [38;5;244m1220[0m    [1;33m0.041 ▲[0m    [1m   33[0m    [38;5;244m387.6k[0m
+[train] it=1220 loss=0.0413 lr=1.88e-05 tok/s=33 peak_mem=23.0GB
+  [38;5;244m1240[0m    [1;32m0.021 ▼[0m    [1m   31[0m    [38;5;244m393.7k[0m
+[train] it=1240 loss=0.0212 lr=1.76e-05 tok/s=31 peak_mem=23.0GB
+  [38;5;244m1250[0m    [1;35mval[0m [1m0.026[0m    [38;5;244m159.55s[0m
+[val] it=1249 val_loss=0.0256
+[best] saved weights from iteration 1249 (val_loss=0.0256)
+  [1;32msave[0m  [38;5;244m0001250_adapters.safetensors[0m
+  [38;5;244m1260[0m    [1;32m0.020 ▼[0m    [1m   30[0m    [38;5;244m399.7k[0m
+[train] it=1260 loss=0.0198 lr=1.66e-05 tok/s=30 peak_mem=23.0GB
+  [38;5;244m1280[0m    [1;33m0.026 ▲[0m    [1m   33[0m    [38;5;244m406.3k[0m
+[train] it=1280 loss=0.0258 lr=1.56e-05 tok/s=33 peak_mem=23.0GB
+  [38;5;244m1300[0m    [1;33m0.031 ▲[0m    [1m   33[0m    [38;5;244m413.1k[0m
+[train] it=1300 loss=0.0307 lr=1.47e-05 tok/s=33 peak_mem=23.0GB
+  [38;5;244m1320[0m    [1;33m0.042 ▲[0m    [1m   32[0m    [38;5;244m419.9k[0m
+[train] it=1320 loss=0.0423 lr=1.38e-05 tok/s=32 peak_mem=23.0GB
+  [38;5;244m1340[0m    [1;32m0.025 ▼[0m    [1m   26[0m    [38;5;244m425.3k[0m
+[train] it=1340 loss=0.0255 lr=1.31e-05 tok/s=26 peak_mem=23.0GB
+  [38;5;244m1360[0m    [1;33m0.029 ▲[0m    [1m   34[0m    [38;5;244m432.2k[0m
+[train] it=1360 loss=0.0290 lr=1.24e-05 tok/s=34 peak_mem=23.0GB
+  [38;5;244m1380[0m    [1;32m0.014 ▼[0m    [1m   26[0m    [38;5;244m437.6k[0m
+[train] it=1380 loss=0.0140 lr=1.18e-05 tok/s=26 peak_mem=23.0GB
+  [38;5;244m1400[0m    [1;33m0.025 ▲[0m    [1m   32[0m    [38;5;244m443.8k[0m
+[train] it=1400 loss=0.0246 lr=1.13e-05 tok/s=32 peak_mem=23.0GB
+  [38;5;244m1420[0m    [1;32m0.022 ▼[0m    [1m   26[0m    [38;5;244m449.1k[0m
+[train] it=1420 loss=0.0216 lr=1.08e-05 tok/s=26 peak_mem=23.0GB
+  [38;5;244m1440[0m    [1;32m0.015 ▼[0m    [1m   33[0m    [38;5;244m456.1k[0m
+[train] it=1440 loss=0.0154 lr=1.05e-05 tok/s=33 peak_mem=23.0GB
+  [38;5;244m1460[0m    [1;33m0.025 ▲[0m    [1m   30[0m    [38;5;244m462.5k[0m
+[train] it=1460 loss=0.0249 lr=1.03e-05 tok/s=30 peak_mem=23.0GB
+  [38;5;244m1480[0m    [1;33m0.027 ▲[0m    [1m   31[0m    [38;5;244m469.3k[0m
+[train] it=1480 loss=0.0273 lr=1.01e-05 tok/s=31 peak_mem=23.0GB
+  [38;5;244m1500[0m    [1;35mval[0m [1m0.025[0m    [38;5;244m158.53s[0m
+[val] it=1499 val_loss=0.0252
+[best] saved weights from iteration 1499 (val_loss=0.0252)
+  [38;5;244m1500[0m    [1;32m0.020 ▼[0m    [1m   33[0m    [38;5;244m476.0k[0m
+[train] it=1500 loss=0.0201 lr=1.00e-05 tok/s=33 peak_mem=23.0GB
+  [1;32msave[0m  [38;5;244m0001500_adapters.safetensors[0m
+[1;34mtrain[0m [34m██████████████████████████████[0m [1;34m100%[0m [38;5;244m·[0m [1;34m1,500[0m[38;5;244m/1,500[0m
+done in 16916.0s; best={'iteration': 1499, 'val_loss': 0.025208953768014908}

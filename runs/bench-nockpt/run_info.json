@@ -1,0 +1,27 @@
+{
+ "run_name": "bench-nockpt",
+ "started": "2026-11-14 19:46:28",
+ "git_commit": "4578b7d",
+ "python": "3.12.13",
+ "mlx": "0.32.4",
+ "mlx_lm": "0.32.2",
+ "platform": "macOS-26.5-arm64-arm-64bit",
+ "device": "Apple M5 Pro",
+ "memory_gb": 48.0,
+ "train_sha256_16": "2cedaea7f8f74e2d",
+ "valid_subset_sha256_16": "b890b5d0a99b94b9",
+ "lengths": {
+  "train": {
+   "n": 2997,
+   "max": 5389,
+   "mean": 1736.3,
+   "total_tokens": 5203750
+  },
+  "valid": {
+   "n": 8,
+   "max": 2028,
+   "mean": 1774.5,
+   "total_tokens": 14196
+  }
+ }
+}
