@@ -88,6 +88,12 @@ uv venv .venv -p 3.12 && uv pip install -r requirements.txt
 # 5. scores
 .venv/bin/python -m src.eval_report --split test   # -> results/eval/summary_test.{json,md}
 # then run notebooks/04_evaluate.ipynb (kernel: .venv)
+
+# 6. catastrophic-forgetting check (~15 min): MMLU 285 + GSM8K 100 + 8 open prompts, adapter off vs on
+.venv/bin/python -I src/forgetting_check.py --download
+.venv/bin/python -I src/forgetting_check.py --tag base
+.venv/bin/python -I src/forgetting_check.py --tag r16 --adapter runs/qwen3-4b-lora-r16-v2/best
+.venv/bin/python -I src/forgetting_check.py --report base r16      # -> results/forgetting/summary.md
 ```
 
 Steps 3 and 4 can also be run as one queue: `scripts/run_rank_ablation.sh` runs r4 training and then all remaining
@@ -114,6 +120,13 @@ merged per contract before scoring.
   definitions and to abstain.
 - **Rank:** r4 keeps 95% of r16's gain with a quarter of the parameters, and validation loss ranks the two the same
   way. r16 was fixed before the test runs; the ablation is reported only, not used to pick a model.
+- **Forgetting** (`results/forgetting/summary.md`, adapter off vs on, same prompts):
+  - Knowledge is intact: on the MMLU questions where the adapter answers with a letter, it scores 71% vs 67% for the
+    base model.
+  - The *output format* is hijacked: 46% of multiple-choice prompts come back as JSON, so raw MMLU falls 66% → 40%.
+  - GSM8K falls 92% → 85%, mostly from unfinished reasoning. Open-ended prompts are unaffected.
+  - Mitigation: route non-extraction traffic to the base model (the adapter is detachable), and mix in general
+    instruction data on the next run.
 
 Full tables, base-vs-fine-tuned examples and the error analysis are in `notebooks/04_evaluate.ipynb` and the write-up.
 

@@ -9,7 +9,7 @@ import markdown
 md, pdf = Path(sys.argv[1]).resolve(), Path(sys.argv[2]).resolve()
 body = markdown.markdown(md.read_text(), extensions=["tables"])
 css = """
-@page { size: A4; margin: 10mm 12mm 10mm 12mm; }
+@page { size: A4; margin: 9mm 12mm 8mm 12mm; }
 body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 11pt; line-height: 1.18; color: #111; }
 h1 { font-size: 15pt; margin: 0 0 2pt; }
 h1 + p { margin-top: 0; color: #333; }

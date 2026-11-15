@@ -55,9 +55,9 @@ The largest gains are on judgement-heavy clauses: Uncapped Liability 0.04 → 0.
 **Rank ablation:** r4 keeps 95% of r16's clause gain with ¼ of the parameters; validation loss agrees, so r16 stays.
 
 **Qualitative example (Minimum Commitment, same prompt).** Base: *"Shipper guarantees that during each Contract Year,
-Shipper will meet its Quarterly Volume Commitment"*. Fine-tuned: the same sentence plus *"…or, in the event it fails to
-do so, shall remit to MPL the Quarterly Deficiency Payment pursuant to Section 3.5."*, which is exactly the gold span.
-The base model drops the financial consequence, which is the part a reviewer needs.
+Shipper will meet its Quarterly Volume Commitment"*. Fine-tuned adds *"…or, in the event it fails to do so, shall remit
+to MPL the Quarterly Deficiency Payment pursuant to Section 3.5."*, exactly the gold span; the base model drops the
+financial consequence a reviewer needs.
 
 **Learned or memorized?** Test contracts are unseen and category subsets are shuffled, so there is no fixed schema to
 memorize. The direct test is the 3 held-out categories (same template, CUAD definitions): F1 rises from 0.27 to 0.48.
@@ -71,19 +71,23 @@ taught *when to abstain*; finding unseen clause types still rests on the base mo
 - **Span convention inflates the base model's gap.** `dated as of January 29, 2007` vs gold `January 29, 2007` is
   fine for a lawyer, but a Jaccard miss.
 - **CUAD label noise.** Role aliases ("Company") are labelled as Parties in only 37% of contracts.
-- **Verbatim but wrong.** `"on the date first above written"` as the Agreement Date passes the hallucination check.
-- **Chunk-local view.** "As defined in Section 2" cannot be resolved from another chunk.
+- **Verbatim but wrong** ("on the date first above written" as Agreement Date passes the verbatim check);
+  **chunk-local view** ("as defined in Section 2" is unresolvable from another chunk).
 
 ## 4. Production & Limitations
 
 - **Hallucination control (built).** Every quote must be a verbatim substring of the input, otherwise it is dropped
   and flagged (0.7% of fine-tuned quotes vs 10.4% for the base model, F1 unchanged). JSON is schema-checked, `[]`
   lets the model abstain, and flagged outputs go to human review.
-- **Catastrophic forgetting.** Adapter on vs off on general prompts: TBD. The adapter is detachable, so general
-  traffic uses the unmodified base model.
+- **Catastrophic forgetting (measured; adapter on vs off, same prompts).** Knowledge is intact: on the 192 MMLU
+  questions where the adapter answers with a letter, it scores 71% vs the base model's 67%. The *output format* is not:
+  multiple-choice prompts (a labelled list plus "answer only") resemble the training prompt, and 46% of them come back
+  as JSON, so raw MMLU falls 66% → 40%. GSM8K falls 92% → 85% (p = 0.04), mostly unfinished reasoning; open prompts
+  are unaffected (0/8 JSON). **Mitigation:** route other traffic to the base model (the adapter is detachable); next
+  run, mix ~10% general instruction data into training.
 - **Deployment.** An 8 GB base model plus a 132 MB adapter; vLLM multi-LoRA serves many adapters on one base, and a
   contract's chunks run as one parallel batch (≈ 4.6 s per chunk on a laptop).
-- **Limitation.** CUAD is US public-company contracts in English. Private supplier paper, scanned PDFs and other
-  jurisdictions are untested, so a lawyer-reviewed pilot on in-house contracts must come before relying on 0.74 F1.
+- **Limitation.** CUAD is US public-company contracts in English; private supplier paper, scanned PDFs and other
+  jurisdictions are untested, so a lawyer-reviewed in-house pilot must precede reliance on 0.74 F1.
 
 *Code: github.com/alokraj01/slm-finetuning · Data: CUAD v1 (Hendrycks et al., 2021), CC BY 4.0*
