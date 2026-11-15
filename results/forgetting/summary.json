@@ -1,0 +1,44 @@
+{
+ "mmlu": {
+  "n": 285,
+  "acc_base": 0.656140350877193,
+  "acc_r16": 0.39649122807017545,
+  "right_to_wrong": 82,
+  "wrong_to_right": 8,
+  "mcnemar_p": 1.3838495394081657e-16
+ },
+ "gsm8k": {
+  "n": 100,
+  "acc_base": 0.92,
+  "acc_r16": 0.85,
+  "right_to_wrong": 8,
+  "wrong_to_right": 1,
+  "mcnemar_p": 0.0390625
+ },
+ "mmlu_diagnosis": {
+  "format_r16": {
+   "prose": 155,
+   "json_with_answer": 42,
+   "json_without_answer": 88
+  },
+  "acc_r16_reading_json_answer": 0.4807017543859649,
+  "items_r16_gave_a_letter": 192,
+  "acc_base_on_those": 0.6666666666666666,
+  "acc_r16_on_those": 0.7135416666666666
+ },
+ "gsm8k_diagnosis": {
+  "no_final_answer_line_base": 3,
+  "no_final_answer_line_r16": 8,
+  "lost_items_without_final_answer_line": 7,
+  "lost_items": 8
+ },
+ "format_probe": {
+  "n": 8,
+  "json_like_base": 0,
+  "json_like_r16": 0
+ },
+ "json_like_on_benchmarks": {
+  "base": 0,
+  "r16": 130
+ }
+}

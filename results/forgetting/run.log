@@ -1,0 +1,17 @@
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 3202.00it/s]
+base mmlu: 285 done, 43s, peak 8.7GB
+base gsm8k: 100 done, 323s, peak 8.7GB
+base probe: 8 done, 337s, peak 8.7GB
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 2420.68it/s]
+r16 mmlu: 285 done, 57s, peak 9.4GB
+r16 gsm8k: 100 done, 425s, peak 9.4GB
+r16 probe: 8 done, 441s, peak 9.4GB
+# Forgetting check: base vs r16 (adapter off vs on, greedy, same prompts)
+
+| benchmark | n | base | r16 | Δ | right→wrong | wrong→right | McNemar p |
+|---|---|---|---|---|---|---|---|
+| mmlu | 285 | 65.6% | 39.6% | -26.0 pt | 82 | 8 | 0.00 |
+| gsm8k | 100 | 92.0% | 85.0% | -7.0 pt | 8 | 1 | 0.04 |
+
+Format probe: answers that came back as JSON instead of prose: base 0/8, r16 0/8. JSON-like answers on the benchmark items: base 0, r16 130.
+
