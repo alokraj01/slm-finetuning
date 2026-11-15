@@ -124,6 +124,8 @@ contract-level split, and document which one was used.
     GPU from a notebook.
   - **`qwen3-4b-lora-r16-v2` is the main model:** 4.7 h, peak 21.4 GB, val loss 0.638 → 0.0252, best checkpoint = the
     last one (iteration 1499).
+  - `qwen3-4b-lora-r4-v1` (ablation): 5.0 h, val loss 0.0278 (best = iteration 1499). Test results: clause F1 0.721 vs r16 0.738, held-out F1 0.470 vs 0.484.
+  - Final test results (2026-11-15), base → r16: clause F1 0.423 → 0.738, header 0.529 → 0.832, held-out 0.274 → 0.484.
   - **Never run two GPU jobs at once.**
 - **Rank ablation (requested by the user, 2026-11-15): r4 vs r16 only.** r8 was dropped so the project can finish the
   same day; its config `configs/qwen3-4b-lora-r8.yaml` is left unused.
