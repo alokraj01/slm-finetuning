@@ -1,0 +1,7 @@
+{
+ "model": "Qwen/Qwen3-4B-Instruct-2507",
+ "adapter": "runs/qwen3-4b-lora-r16-v2/best",
+ "decoding": "greedy",
+ "max_tokens": 1024,
+ "batch_size": 8
+}

@@ -1,0 +1,1966 @@
+{
+ "base": {
+  "trained": {
+   "health": {
+    "chunks": 822,
+    "coverage": 1.0,
+    "strict_json": 0.9951338199513382,
+    "json_ok": 0.9951338199513382,
+    "all_keys": 0.9951338199513382,
+    "truncated": 0.0,
+    "quotes": 2340,
+    "verbatim_rate": 0.8957264957264958,
+    "mean_gen_tokens": 230.33211678832117,
+    "s_per_chunk": 4.57367396593674
+   },
+   "chunk": {
+    "per_category": {
+     "Expiration Date": {
+      "P": 0.6296296296296297,
+      "R": 0.38202247191011235,
+      "F1": 0.4755244755244755,
+      "tp": 34,
+      "n_pred": 54,
+      "n_gold": 89,
+      "items": 821,
+      "gold_pos": 85,
+      "false_alarm_rate": 0.014945652173913044,
+      "miss_rate": 0.49411764705882355
+     },
+     "Renewal Term": {
+      "P": 0.43548387096774194,
+      "R": 0.7297297297297297,
+      "F1": 0.5454545454545454,
+      "tp": 27,
+      "n_pred": 62,
+      "n_gold": 37,
+      "items": 821,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.03807106598984772,
+      "miss_rate": 0.030303030303030304
+     },
+     "Notice Period To Terminate Renewal": {
+      "P": 0.5416666666666666,
+      "R": 0.6190476190476191,
+      "F1": 0.5777777777777778,
+      "tp": 13,
+      "n_pred": 24,
+      "n_gold": 21,
+      "items": 822,
+      "gold_pos": 19,
+      "false_alarm_rate": 0.0062266500622665,
+      "miss_rate": 0.05263157894736842
+     },
+     "Governing Law": {
+      "P": 0.7016129032258065,
+      "R": 0.9775280898876404,
+      "F1": 0.8169014084507042,
+      "tp": 87,
+      "n_pred": 124,
+      "n_gold": 89,
+      "items": 822,
+      "gold_pos": 87,
+      "false_alarm_rate": 0.047619047619047616,
+      "miss_rate": 0.0
+     },
+     "Termination For Convenience": {
+      "P": 0.26436781609195403,
+      "R": 0.5609756097560976,
+      "F1": 0.359375,
+      "tp": 23,
+      "n_pred": 87,
+      "n_gold": 41,
+      "items": 822,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.06463878326996197,
+      "miss_rate": 0.21212121212121213
+     },
+     "Anti-Assignment": {
+      "P": 0.46357615894039733,
+      "R": 0.6422018348623854,
+      "F1": 0.5384615384615384,
+      "tp": 70,
+      "n_pred": 151,
+      "n_gold": 109,
+      "items": 821,
+      "gold_pos": 78,
+      "false_alarm_rate": 0.08344549125168237,
+      "miss_rate": 0.05128205128205128
+     },
+     "Change Of Control": {
+      "P": 0.29347826086956524,
+      "R": 0.5294117647058824,
+      "F1": 0.3776223776223776,
+      "tp": 27,
+      "n_pred": 92,
+      "n_gold": 51,
+      "items": 817,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.05229591836734694,
+      "miss_rate": 0.06060606060606061
+     },
+     "Cap On Liability": {
+      "P": 0.27722772277227725,
+      "R": 0.5656565656565656,
+      "F1": 0.37209302325581395,
+      "tp": 56,
+      "n_pred": 202,
+      "n_gold": 99,
+      "items": 821,
+      "gold_pos": 69,
+      "false_alarm_rate": 0.1422872340425532,
+      "miss_rate": 0.13043478260869565
+     },
+     "Uncapped Liability": {
+      "P": 0.034482758620689655,
+      "R": 0.043478260869565216,
+      "F1": 0.038461538461538464,
+      "tp": 1,
+      "n_pred": 29,
+      "n_gold": 23,
+      "items": 821,
+      "gold_pos": 16,
+      "false_alarm_rate": 0.03229813664596273,
+      "miss_rate": 0.9375
+     },
+     "Minimum Commitment": {
+      "P": 0.32989690721649484,
+      "R": 0.41025641025641024,
+      "F1": 0.36571428571428566,
+      "tp": 32,
+      "n_pred": 97,
+      "n_gold": 78,
+      "items": 822,
+      "gold_pos": 54,
+      "false_alarm_rate": 0.048177083333333336,
+      "miss_rate": 0.3888888888888889
+     },
+     "Exclusivity": {
+      "P": 0.15246636771300448,
+      "R": 0.4857142857142857,
+      "F1": 0.2320819112627986,
+      "tp": 34,
+      "n_pred": 223,
+      "n_gold": 70,
+      "items": 819,
+      "gold_pos": 45,
+      "false_alarm_rate": 0.13178294573643412,
+      "miss_rate": 0.1111111111111111
+     },
+     "Audit Rights": {
+      "P": 0.43410852713178294,
+      "R": 0.5544554455445545,
+      "F1": 0.48695652173913045,
+      "tp": 56,
+      "n_pred": 129,
+      "n_gold": 101,
+      "items": 820,
+      "gold_pos": 59,
+      "false_alarm_rate": 0.04467805519053877,
+      "miss_rate": 0.0847457627118644
+     }
+    },
+    "per_group": {
+     "clause": {
+      "P": 0.36106750392464676,
+      "R": 0.5693069306930693,
+      "F1": 0.4418828049951969,
+      "tp": 460,
+      "n_pred": 1274,
+      "n_gold": 808,
+      "items": 9849,
+      "gold_pos": 611,
+      "false_alarm_rate": 0.05856245940679801,
+      "miss_rate": 0.18330605564648117
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    }
+   },
+   "chunk_verbatim": {
+    "per_category": {
+     "Expiration Date": {
+      "P": 0.5681818181818182,
+      "R": 0.2808988764044944,
+      "F1": 0.37593984962406013,
+      "tp": 25,
+      "n_pred": 44,
+      "n_gold": 89,
+      "items": 821,
+      "gold_pos": 85,
+      "false_alarm_rate": 0.01358695652173913,
+      "miss_rate": 0.6
+     },
+     "Renewal Term": {
+      "P": 0.44,
+      "R": 0.5945945945945946,
+      "F1": 0.5057471264367815,
+      "tp": 22,
+      "n_pred": 50,
+      "n_gold": 37,
+      "items": 821,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.030456852791878174,
+      "miss_rate": 0.21212121212121213
+     },
+     "Notice Period To Terminate Renewal": {
+      "P": 0.5416666666666666,
+      "R": 0.6190476190476191,
+      "F1": 0.5777777777777778,
+      "tp": 13,
+      "n_pred": 24,
+      "n_gold": 21,
+      "items": 822,
+      "gold_pos": 19,
+      "false_alarm_rate": 0.0062266500622665,
+      "miss_rate": 0.05263157894736842
+     },
+     "Governing Law": {
+      "P": 0.7130434782608696,
+      "R": 0.9213483146067416,
+      "F1": 0.803921568627451,
+      "tp": 82,
+      "n_pred": 115,
+      "n_gold": 89,
+      "items": 822,
+      "gold_pos": 87,
+      "false_alarm_rate": 0.04217687074829932,
+      "miss_rate": 0.05747126436781609
+     },
+     "Termination For Convenience": {
+      "P": 0.26506024096385544,
+      "R": 0.5365853658536586,
+      "F1": 0.35483870967741943,
+      "tp": 22,
+      "n_pred": 83,
+      "n_gold": 41,
+      "items": 822,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.062103929024081114,
+      "miss_rate": 0.2727272727272727
+     },
+     "Anti-Assignment": {
+      "P": 0.44525547445255476,
+      "R": 0.5596330275229358,
+      "F1": 0.4959349593495935,
+      "tp": 61,
+      "n_pred": 137,
+      "n_gold": 109,
+      "items": 821,
+      "gold_pos": 78,
+      "false_alarm_rate": 0.07806191117092867,
+      "miss_rate": 0.14102564102564102
+     },
+     "Change Of Control": {
+      "P": 0.2857142857142857,
+      "R": 0.39215686274509803,
+      "F1": 0.33057851239669417,
+      "tp": 20,
+      "n_pred": 70,
+      "n_gold": 51,
+      "items": 817,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.03571428571428571,
+      "miss_rate": 0.2727272727272727
+     },
+     "Cap On Liability": {
+      "P": 0.2857142857142857,
+      "R": 0.5050505050505051,
+      "F1": 0.364963503649635,
+      "tp": 50,
+      "n_pred": 175,
+      "n_gold": 99,
+      "items": 821,
+      "gold_pos": 69,
+      "false_alarm_rate": 0.12367021276595745,
+      "miss_rate": 0.2463768115942029
+     },
+     "Uncapped Liability": {
+      "P": 0.043478260869565216,
+      "R": 0.043478260869565216,
+      "F1": 0.043478260869565216,
+      "tp": 1,
+      "n_pred": 23,
+      "n_gold": 23,
+      "items": 821,
+      "gold_pos": 16,
+      "false_alarm_rate": 0.02608695652173913,
+      "miss_rate": 0.9375
+     },
+     "Minimum Commitment": {
+      "P": 0.3132530120481928,
+      "R": 0.3333333333333333,
+      "F1": 0.3229813664596273,
+      "tp": 26,
+      "n_pred": 83,
+      "n_gold": 78,
+      "items": 822,
+      "gold_pos": 54,
+      "false_alarm_rate": 0.040364583333333336,
+      "miss_rate": 0.4444444444444444
+     },
+     "Exclusivity": {
+      "P": 0.1452513966480447,
+      "R": 0.37142857142857144,
+      "F1": 0.2088353413654619,
+      "tp": 26,
+      "n_pred": 179,
+      "n_gold": 70,
+      "items": 819,
+      "gold_pos": 45,
+      "false_alarm_rate": 0.1124031007751938,
+      "miss_rate": 0.26666666666666666
+     },
+     "Audit Rights": {
+      "P": 0.45535714285714285,
+      "R": 0.504950495049505,
+      "F1": 0.47887323943661975,
+      "tp": 51,
+      "n_pred": 112,
+      "n_gold": 101,
+      "items": 820,
+      "gold_pos": 59,
+      "false_alarm_rate": 0.03942181340341656,
+      "miss_rate": 0.1864406779661017
+     }
+    },
+    "per_group": {
+     "clause": {
+      "P": 0.3643835616438356,
+      "R": 0.4938118811881188,
+      "F1": 0.41933788754598,
+      "tp": 399,
+      "n_pred": 1095,
+      "n_gold": 808,
+      "items": 9849,
+      "gold_pos": 611,
+      "false_alarm_rate": 0.05055206754708812,
+      "miss_rate": 0.281505728314239
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    }
+   },
+   "contract": {
+    "per_category": {
+     "Document Name": {
+      "P": 0.6379310344827587,
+      "R": 0.4567901234567901,
+      "F1": 0.5323741007194245,
+      "tp": 37,
+      "n_pred": 58,
+      "n_gold": 81,
+      "items": 80,
+      "gold_pos": 80,
+      "false_alarm_rate": null,
+      "miss_rate": 0.325
+     },
+     "Parties": {
+      "P": 0.5121951219512195,
+      "R": 0.7418478260869565,
+      "F1": 0.6059933407325194,
+      "tp": 273,
+      "n_pred": 533,
+      "n_gold": 368,
+      "items": 80,
+      "gold_pos": 80,
+      "false_alarm_rate": null,
+      "miss_rate": 0.0125
+     },
+     "Agreement Date": {
+      "P": 0.41379310344827586,
+      "R": 0.34285714285714286,
+      "F1": 0.375,
+      "tp": 24,
+      "n_pred": 58,
+      "n_gold": 70,
+      "items": 80,
+      "gold_pos": 69,
+      "false_alarm_rate": 0.45454545454545453,
+      "miss_rate": 0.37681159420289856
+     },
+     "Effective Date": {
+      "P": 0.2032520325203252,
+      "R": 0.373134328358209,
+      "F1": 0.2631578947368421,
+      "tp": 25,
+      "n_pred": 123,
+      "n_gold": 67,
+      "items": 80,
+      "gold_pos": 58,
+      "false_alarm_rate": 0.18181818181818182,
+      "miss_rate": 0.034482758620689655
+     },
+     "Expiration Date": {
+      "P": 0.625,
+      "R": 0.4166666666666667,
+      "F1": 0.5,
+      "tp": 30,
+      "n_pred": 48,
+      "n_gold": 72,
+      "items": 80,
+      "gold_pos": 64,
+      "false_alarm_rate": 0.0,
+      "miss_rate": 0.421875
+     },
+     "Renewal Term": {
+      "P": 0.4107142857142857,
+      "R": 0.7419354838709677,
+      "F1": 0.528735632183908,
+      "tp": 23,
+      "n_pred": 56,
+      "n_gold": 31,
+      "items": 80,
+      "gold_pos": 28,
+      "false_alarm_rate": 0.2692307692307692,
+      "miss_rate": 0.0
+     },
+     "Notice Period To Terminate Renewal": {
+      "P": 0.5,
+      "R": 0.625,
+      "F1": 0.5555555555555556,
+      "tp": 10,
+      "n_pred": 20,
+      "n_gold": 16,
+      "items": 80,
+      "gold_pos": 15,
+      "false_alarm_rate": 0.06153846153846154,
+      "miss_rate": 0.06666666666666667
+     },
+     "Governing Law": {
+      "P": 0.6272727272727273,
+      "R": 0.9857142857142858,
+      "F1": 0.7666666666666666,
+      "tp": 69,
+      "n_pred": 110,
+      "n_gold": 70,
+      "items": 80,
+      "gold_pos": 67,
+      "false_alarm_rate": 0.15384615384615385,
+      "miss_rate": 0.0
+     },
+     "Termination For Convenience": {
+      "P": 0.2345679012345679,
+      "R": 0.6129032258064516,
+      "F1": 0.33928571428571425,
+      "tp": 19,
+      "n_pred": 81,
+      "n_gold": 31,
+      "items": 80,
+      "gold_pos": 25,
+      "false_alarm_rate": 0.509090909090909,
+      "miss_rate": 0.08
+     },
+     "Anti-Assignment": {
+      "P": 0.4357142857142857,
+      "R": 0.648936170212766,
+      "F1": 0.5213675213675214,
+      "tp": 61,
+      "n_pred": 140,
+      "n_gold": 94,
+      "items": 80,
+      "gold_pos": 53,
+      "false_alarm_rate": 0.4074074074074074,
+      "miss_rate": 0.0
+     },
+     "Change Of Control": {
+      "P": 0.25842696629213485,
+      "R": 0.48936170212765956,
+      "F1": 0.338235294117647,
+      "tp": 23,
+      "n_pred": 89,
+      "n_gold": 47,
+      "items": 80,
+      "gold_pos": 20,
+      "false_alarm_rate": 0.25,
+      "miss_rate": 0.0
+     },
+     "Cap On Liability": {
+      "P": 0.2639593908629442,
+      "R": 0.5977011494252874,
+      "F1": 0.36619718309859156,
+      "tp": 52,
+      "n_pred": 197,
+      "n_gold": 87,
+      "items": 80,
+      "gold_pos": 41,
+      "false_alarm_rate": 0.48717948717948717,
+      "miss_rate": 0.024390243902439025
+     },
+     "Uncapped Liability": {
+      "P": 0.03571428571428571,
+      "R": 0.043478260869565216,
+      "F1": 0.0392156862745098,
+      "tp": 1,
+      "n_pred": 28,
+      "n_gold": 23,
+      "items": 80,
+      "gold_pos": 15,
+      "false_alarm_rate": 0.16923076923076924,
+      "miss_rate": 0.6666666666666666
+     },
+     "Minimum Commitment": {
+      "P": 0.31521739130434784,
+      "R": 0.43283582089552236,
+      "F1": 0.3647798742138365,
+      "tp": 29,
+      "n_pred": 92,
+      "n_gold": 67,
+      "items": 80,
+      "gold_pos": 27,
+      "false_alarm_rate": 0.16981132075471697,
+      "miss_rate": 0.18518518518518517
+     },
+     "Exclusivity": {
+      "P": 0.15695067264573992,
+      "R": 0.5384615384615384,
+      "F1": 0.24305555555555558,
+      "tp": 35,
+      "n_pred": 223,
+      "n_gold": 65,
+      "items": 80,
+      "gold_pos": 28,
+      "false_alarm_rate": 0.6346153846153846,
+      "miss_rate": 0.0
+     },
+     "Audit Rights": {
+      "P": 0.3858267716535433,
+      "R": 0.5903614457831325,
+      "F1": 0.4666666666666667,
+      "tp": 49,
+      "n_pred": 127,
+      "n_gold": 83,
+      "items": 80,
+      "gold_pos": 32,
+      "false_alarm_rate": 0.125,
+      "miss_rate": 0.0625
+     }
+    },
+    "per_group": {
+     "header": {
+      "P": 0.4650259067357513,
+      "R": 0.6126279863481229,
+      "F1": 0.5287187039764359,
+      "tp": 359,
+      "n_pred": 772,
+      "n_gold": 586,
+      "items": 320,
+      "gold_pos": 287,
+      "false_alarm_rate": 0.2727272727272727,
+      "miss_rate": 0.1916376306620209
+     },
+     "clause": {
+      "P": 0.3311312964492155,
+      "R": 0.5845481049562682,
+      "F1": 0.422772799156563,
+      "tp": 401,
+      "n_pred": 1211,
+      "n_gold": 686,
+      "items": 960,
+      "gold_pos": 415,
+      "false_alarm_rate": 0.27889908256880735,
+      "miss_rate": 0.11566265060240964
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    },
+    "contracts": 80
+   },
+   "contract_verbatim": {
+    "per_category": {
+     "Document Name": {
+      "P": 0.6666666666666666,
+      "R": 0.4444444444444444,
+      "F1": 0.5333333333333333,
+      "tp": 36,
+      "n_pred": 54,
+      "n_gold": 81,
+      "items": 80,
+      "gold_pos": 80,
+      "false_alarm_rate": null,
+      "miss_rate": 0.375
+     },
+     "Parties": {
+      "P": 0.5396825396825397,
+      "R": 0.7391304347826086,
+      "F1": 0.6238532110091742,
+      "tp": 272,
+      "n_pred": 504,
+      "n_gold": 368,
+      "items": 80,
+      "gold_pos": 80,
+      "false_alarm_rate": null,
+      "miss_rate": 0.0125
+     },
+     "Agreement Date": {
+      "P": 0.4074074074074074,
+      "R": 0.3142857142857143,
+      "F1": 0.3548387096774193,
+      "tp": 22,
+      "n_pred": 54,
+      "n_gold": 70,
+      "items": 80,
+      "gold_pos": 69,
+      "false_alarm_rate": 0.45454545454545453,
+      "miss_rate": 0.42028985507246375
+     },
+     "Effective Date": {
+      "P": 0.1926605504587156,
+      "R": 0.31343283582089554,
+      "F1": 0.2386363636363637,
+      "tp": 21,
+      "n_pred": 109,
+      "n_gold": 67,
+      "items": 80,
+      "gold_pos": 58,
+      "false_alarm_rate": 0.13636363636363635,
+      "miss_rate": 0.10344827586206896
+     },
+     "Expiration Date": {
+      "P": 0.575,
+      "R": 0.3194444444444444,
+      "F1": 0.41071428571428564,
+      "tp": 23,
+      "n_pred": 40,
+      "n_gold": 72,
+      "items": 80,
+      "gold_pos": 64,
+      "false_alarm_rate": 0.0,
+      "miss_rate": 0.5
+     },
+     "Renewal Term": {
+      "P": 0.41304347826086957,
+      "R": 0.6129032258064516,
+      "F1": 0.49350649350649356,
+      "tp": 19,
+      "n_pred": 46,
+      "n_gold": 31,
+      "items": 80,
+      "gold_pos": 28,
+      "false_alarm_rate": 0.25,
+      "miss_rate": 0.17857142857142858
+     },
+     "Notice Period To Terminate Renewal": {
+      "P": 0.5,
+      "R": 0.625,
+      "F1": 0.5555555555555556,
+      "tp": 10,
+      "n_pred": 20,
+      "n_gold": 16,
+      "items": 80,
+      "gold_pos": 15,
+      "false_alarm_rate": 0.06153846153846154,
+      "miss_rate": 0.06666666666666667
+     },
+     "Governing Law": {
+      "P": 0.6534653465346535,
+      "R": 0.9428571428571428,
+      "F1": 0.7719298245614036,
+      "tp": 66,
+      "n_pred": 101,
+      "n_gold": 70,
+      "items": 80,
+      "gold_pos": 67,
+      "false_alarm_rate": 0.15384615384615385,
+      "miss_rate": 0.014925373134328358
+     },
+     "Termination For Convenience": {
+      "P": 0.23376623376623376,
+      "R": 0.5806451612903226,
+      "F1": 0.33333333333333337,
+      "tp": 18,
+      "n_pred": 77,
+      "n_gold": 31,
+      "items": 80,
+      "gold_pos": 25,
+      "false_alarm_rate": 0.4909090909090909,
+      "miss_rate": 0.08
+     },
+     "Anti-Assignment": {
+      "P": 0.41732283464566927,
+      "R": 0.5638297872340425,
+      "F1": 0.4796380090497738,
+      "tp": 53,
+      "n_pred": 127,
+      "n_gold": 94,
+      "items": 80,
+      "gold_pos": 53,
+      "false_alarm_rate": 0.37037037037037035,
+      "miss_rate": 0.03773584905660377
+     },
+     "Change Of Control": {
+      "P": 0.2571428571428571,
+      "R": 0.3829787234042553,
+      "F1": 0.30769230769230765,
+      "tp": 18,
+      "n_pred": 70,
+      "n_gold": 47,
+      "items": 80,
+      "gold_pos": 20,
+      "false_alarm_rate": 0.23333333333333334,
+      "miss_rate": 0.2
+     },
+     "Cap On Liability": {
+      "P": 0.27647058823529413,
+      "R": 0.5402298850574713,
+      "F1": 0.36575875486381326,
+      "tp": 47,
+      "n_pred": 170,
+      "n_gold": 87,
+      "items": 80,
+      "gold_pos": 41,
+      "false_alarm_rate": 0.46153846153846156,
+      "miss_rate": 0.04878048780487805
+     },
+     "Uncapped Liability": {
+      "P": 0.045454545454545456,
+      "R": 0.043478260869565216,
+      "F1": 0.04444444444444444,
+      "tp": 1,
+      "n_pred": 22,
+      "n_gold": 23,
+      "items": 80,
+      "gold_pos": 15,
+      "false_alarm_rate": 0.15384615384615385,
+      "miss_rate": 0.7333333333333333
+     },
+     "Minimum Commitment": {
+      "P": 0.3037974683544304,
+      "R": 0.3582089552238806,
+      "F1": 0.3287671232876712,
+      "tp": 24,
+      "n_pred": 79,
+      "n_gold": 67,
+      "items": 80,
+      "gold_pos": 27,
+      "false_alarm_rate": 0.16981132075471697,
+      "miss_rate": 0.2222222222222222
+     },
+     "Exclusivity": {
+      "P": 0.15730337078651685,
+      "R": 0.4307692307692308,
+      "F1": 0.23045267489711938,
+      "tp": 28,
+      "n_pred": 178,
+      "n_gold": 65,
+      "items": 80,
+      "gold_pos": 28,
+      "false_alarm_rate": 0.5576923076923077,
+      "miss_rate": 0.03571428571428571
+     },
+     "Audit Rights": {
+      "P": 0.4036697247706422,
+      "R": 0.5301204819277109,
+      "F1": 0.45833333333333337,
+      "tp": 44,
+      "n_pred": 109,
+      "n_gold": 83,
+      "items": 80,
+      "gold_pos": 32,
+      "false_alarm_rate": 0.08333333333333333,
+      "miss_rate": 0.1875
+     }
+    },
+    "per_group": {
+     "header": {
+      "P": 0.4868238557558946,
+      "R": 0.5989761092150171,
+      "F1": 0.5371078806426931,
+      "tp": 351,
+      "n_pred": 721,
+      "n_gold": 586,
+      "items": 320,
+      "gold_pos": 287,
+      "false_alarm_rate": 0.24242424242424243,
+      "miss_rate": 0.22996515679442509
+     },
+     "clause": {
+      "P": 0.33782483156881615,
+      "R": 0.5116618075801749,
+      "F1": 0.40695652173913044,
+      "tp": 351,
+      "n_pred": 1039,
+      "n_gold": 686,
+      "items": 960,
+      "gold_pos": 415,
+      "false_alarm_rate": 0.25688073394495414,
+      "miss_rate": 0.17590361445783131
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    },
+    "contracts": 80
+   }
+  },
+  "heldout": {
+   "health": {
+    "chunks": 0,
+    "coverage": 0.0
+   },
+   "chunk": {
+    "per_category": {},
+    "per_group": {
+     "clause": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    }
+   },
+   "chunk_verbatim": {
+    "per_category": {},
+    "per_group": {
+     "clause": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    }
+   },
+   "contract": {
+    "per_category": {},
+    "per_group": {
+     "header": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "clause": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    },
+    "contracts": 0
+   },
+   "contract_verbatim": {
+    "per_category": {},
+    "per_group": {
+     "header": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "clause": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    },
+    "contracts": 0
+   }
+  }
+ },
+ "ft": {
+  "trained": {
+   "health": {
+    "chunks": 822,
+    "coverage": 1.0,
+    "strict_json": 0.9987834549878345,
+    "json_ok": 0.9987834549878345,
+    "all_keys": 0.9987834549878345,
+    "truncated": 0.0,
+    "quotes": 1428,
+    "verbatim_rate": 0.9929971988795518,
+    "mean_gen_tokens": 158.90267639902677,
+    "s_per_chunk": 4.665206812652069
+   },
+   "chunk": {
+    "per_category": {
+     "Expiration Date": {
+      "P": 0.92,
+      "R": 0.7752808988764045,
+      "F1": 0.8414634146341463,
+      "tp": 69,
+      "n_pred": 75,
+      "n_gold": 89,
+      "items": 821,
+      "gold_pos": 85,
+      "false_alarm_rate": 0.005434782608695652,
+      "miss_rate": 0.18823529411764706
+     },
+     "Renewal Term": {
+      "P": 0.7560975609756098,
+      "R": 0.8378378378378378,
+      "F1": 0.7948717948717948,
+      "tp": 31,
+      "n_pred": 41,
+      "n_gold": 37,
+      "items": 821,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.006345177664974619,
+      "miss_rate": 0.09090909090909091
+     },
+     "Notice Period To Terminate Renewal": {
+      "P": 0.8571428571428571,
+      "R": 0.8571428571428571,
+      "F1": 0.8571428571428571,
+      "tp": 18,
+      "n_pred": 21,
+      "n_gold": 21,
+      "items": 822,
+      "gold_pos": 19,
+      "false_alarm_rate": 0.0037359900373599006,
+      "miss_rate": 0.15789473684210525
+     },
+     "Governing Law": {
+      "P": 0.9361702127659575,
+      "R": 0.9887640449438202,
+      "F1": 0.9617486338797814,
+      "tp": 88,
+      "n_pred": 94,
+      "n_gold": 89,
+      "items": 822,
+      "gold_pos": 87,
+      "false_alarm_rate": 0.004081632653061225,
+      "miss_rate": 0.011494252873563218
+     },
+     "Termination For Convenience": {
+      "P": 0.9,
+      "R": 0.6585365853658537,
+      "F1": 0.7605633802816902,
+      "tp": 27,
+      "n_pred": 30,
+      "n_gold": 41,
+      "items": 822,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.0012674271229404308,
+      "miss_rate": 0.15151515151515152
+     },
+     "Anti-Assignment": {
+      "P": 0.7457627118644068,
+      "R": 0.8073394495412844,
+      "F1": 0.775330396475771,
+      "tp": 88,
+      "n_pred": 118,
+      "n_gold": 109,
+      "items": 821,
+      "gold_pos": 78,
+      "false_alarm_rate": 0.02557200538358008,
+      "miss_rate": 0.07692307692307693
+     },
+     "Change Of Control": {
+      "P": 0.7837837837837838,
+      "R": 0.5686274509803921,
+      "F1": 0.6590909090909091,
+      "tp": 29,
+      "n_pred": 37,
+      "n_gold": 51,
+      "items": 817,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.00510204081632653,
+      "miss_rate": 0.3939393939393939
+     },
+     "Cap On Liability": {
+      "P": 0.7326732673267327,
+      "R": 0.7474747474747475,
+      "F1": 0.74,
+      "tp": 74,
+      "n_pred": 101,
+      "n_gold": 99,
+      "items": 821,
+      "gold_pos": 69,
+      "false_alarm_rate": 0.009308510638297872,
+      "miss_rate": 0.15942028985507245
+     },
+     "Uncapped Liability": {
+      "P": 0.5833333333333334,
+      "R": 0.6086956521739131,
+      "F1": 0.5957446808510638,
+      "tp": 14,
+      "n_pred": 24,
+      "n_gold": 23,
+      "items": 821,
+      "gold_pos": 16,
+      "false_alarm_rate": 0.006211180124223602,
+      "miss_rate": 0.3125
+     },
+     "Minimum Commitment": {
+      "P": 0.7358490566037735,
+      "R": 0.5,
+      "F1": 0.5954198473282442,
+      "tp": 39,
+      "n_pred": 53,
+      "n_gold": 78,
+      "items": 822,
+      "gold_pos": 54,
+      "false_alarm_rate": 0.01171875,
+      "miss_rate": 0.48148148148148145
+     },
+     "Exclusivity": {
+      "P": 0.7368421052631579,
+      "R": 0.4,
+      "F1": 0.5185185185185185,
+      "tp": 28,
+      "n_pred": 38,
+      "n_gold": 70,
+      "items": 819,
+      "gold_pos": 45,
+      "false_alarm_rate": 0.00516795865633075,
+      "miss_rate": 0.4888888888888889
+     },
+     "Audit Rights": {
+      "P": 0.6767676767676768,
+      "R": 0.6633663366336634,
+      "F1": 0.67,
+      "tp": 67,
+      "n_pred": 99,
+      "n_gold": 101,
+      "items": 820,
+      "gold_pos": 59,
+      "false_alarm_rate": 0.01445466491458607,
+      "miss_rate": 0.0847457627118644
+     }
+    },
+    "per_group": {
+     "clause": {
+      "P": 0.7824897400820794,
+      "R": 0.7079207920792079,
+      "F1": 0.7433398310591293,
+      "tp": 572,
+      "n_pred": 731,
+      "n_gold": 808,
+      "items": 9849,
+      "gold_pos": 611,
+      "false_alarm_rate": 0.008118640398354622,
+      "miss_rate": 0.18985270049099837
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    }
+   },
+   "chunk_verbatim": {
+    "per_category": {
+     "Expiration Date": {
+      "P": 0.92,
+      "R": 0.7752808988764045,
+      "F1": 0.8414634146341463,
+      "tp": 69,
+      "n_pred": 75,
+      "n_gold": 89,
+      "items": 821,
+      "gold_pos": 85,
+      "false_alarm_rate": 0.005434782608695652,
+      "miss_rate": 0.18823529411764706
+     },
+     "Renewal Term": {
+      "P": 0.7560975609756098,
+      "R": 0.8378378378378378,
+      "F1": 0.7948717948717948,
+      "tp": 31,
+      "n_pred": 41,
+      "n_gold": 37,
+      "items": 821,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.006345177664974619,
+      "miss_rate": 0.09090909090909091
+     },
+     "Notice Period To Terminate Renewal": {
+      "P": 0.8571428571428571,
+      "R": 0.8571428571428571,
+      "F1": 0.8571428571428571,
+      "tp": 18,
+      "n_pred": 21,
+      "n_gold": 21,
+      "items": 822,
+      "gold_pos": 19,
+      "false_alarm_rate": 0.0037359900373599006,
+      "miss_rate": 0.15789473684210525
+     },
+     "Governing Law": {
+      "P": 0.9361702127659575,
+      "R": 0.9887640449438202,
+      "F1": 0.9617486338797814,
+      "tp": 88,
+      "n_pred": 94,
+      "n_gold": 89,
+      "items": 822,
+      "gold_pos": 87,
+      "false_alarm_rate": 0.004081632653061225,
+      "miss_rate": 0.011494252873563218
+     },
+     "Termination For Convenience": {
+      "P": 0.8928571428571429,
+      "R": 0.6097560975609756,
+      "F1": 0.7246376811594203,
+      "tp": 25,
+      "n_pred": 28,
+      "n_gold": 41,
+      "items": 822,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.0012674271229404308,
+      "miss_rate": 0.21212121212121213
+     },
+     "Anti-Assignment": {
+      "P": 0.7435897435897436,
+      "R": 0.7981651376146789,
+      "F1": 0.7699115044247787,
+      "tp": 87,
+      "n_pred": 117,
+      "n_gold": 109,
+      "items": 821,
+      "gold_pos": 78,
+      "false_alarm_rate": 0.02557200538358008,
+      "miss_rate": 0.08974358974358974
+     },
+     "Change Of Control": {
+      "P": 0.7777777777777778,
+      "R": 0.5490196078431373,
+      "F1": 0.6436781609195402,
+      "tp": 28,
+      "n_pred": 36,
+      "n_gold": 51,
+      "items": 817,
+      "gold_pos": 33,
+      "false_alarm_rate": 0.00510204081632653,
+      "miss_rate": 0.3939393939393939
+     },
+     "Cap On Liability": {
+      "P": 0.7326732673267327,
+      "R": 0.7474747474747475,
+      "F1": 0.74,
+      "tp": 74,
+      "n_pred": 101,
+      "n_gold": 99,
+      "items": 821,
+      "gold_pos": 69,
+      "false_alarm_rate": 0.009308510638297872,
+      "miss_rate": 0.15942028985507245
+     },
+     "Uncapped Liability": {
+      "P": 0.5833333333333334,
+      "R": 0.6086956521739131,
+      "F1": 0.5957446808510638,
+      "tp": 14,
+      "n_pred": 24,
+      "n_gold": 23,
+      "items": 821,
+      "gold_pos": 16,
+      "false_alarm_rate": 0.006211180124223602,
+      "miss_rate": 0.3125
+     },
+     "Minimum Commitment": {
+      "P": 0.7358490566037735,
+      "R": 0.5,
+      "F1": 0.5954198473282442,
+      "tp": 39,
+      "n_pred": 53,
+      "n_gold": 78,
+      "items": 822,
+      "gold_pos": 54,
+      "false_alarm_rate": 0.01171875,
+      "miss_rate": 0.48148148148148145
+     },
+     "Exclusivity": {
+      "P": 0.7297297297297297,
+      "R": 0.38571428571428573,
+      "F1": 0.5046728971962616,
+      "tp": 27,
+      "n_pred": 37,
+      "n_gold": 70,
+      "items": 819,
+      "gold_pos": 45,
+      "false_alarm_rate": 0.00516795865633075,
+      "miss_rate": 0.5111111111111111
+     },
+     "Audit Rights": {
+      "P": 0.6836734693877551,
+      "R": 0.6633663366336634,
+      "F1": 0.6733668341708543,
+      "tp": 67,
+      "n_pred": 98,
+      "n_gold": 101,
+      "items": 820,
+      "gold_pos": 59,
+      "false_alarm_rate": 0.01445466491458607,
+      "miss_rate": 0.0847457627118644
+     }
+    },
+    "per_group": {
+     "clause": {
+      "P": 0.7820689655172414,
+      "R": 0.7017326732673267,
+      "F1": 0.7397260273972602,
+      "tp": 567,
+      "n_pred": 725,
+      "n_gold": 808,
+      "items": 9849,
+      "gold_pos": 611,
+      "false_alarm_rate": 0.008118640398354622,
+      "miss_rate": 0.19639934533551553
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    }
+   },
+   "contract": {
+    "per_category": {
+     "Document Name": {
+      "P": 0.8809523809523809,
+      "R": 0.9135802469135802,
+      "F1": 0.8969696969696969,
+      "tp": 74,
+      "n_pred": 84,
+      "n_gold": 81,
+      "items": 80,
+      "gold_pos": 80,
+      "false_alarm_rate": null,
+      "miss_rate": 0.0125
+     },
+     "Parties": {
+      "P": 0.8423772609819121,
+      "R": 0.8858695652173914,
+      "F1": 0.8635761589403973,
+      "tp": 326,
+      "n_pred": 387,
+      "n_gold": 368,
+      "items": 80,
+      "gold_pos": 80,
+      "false_alarm_rate": null,
+      "miss_rate": 0.025
+     },
+     "Agreement Date": {
+      "P": 0.7654320987654321,
+      "R": 0.8857142857142857,
+      "F1": 0.8211920529801325,
+      "tp": 62,
+      "n_pred": 81,
+      "n_gold": 70,
+      "items": 80,
+      "gold_pos": 69,
+      "false_alarm_rate": 0.7272727272727273,
+      "miss_rate": 0.057971014492753624
+     },
+     "Effective Date": {
+      "P": 0.5657894736842105,
+      "R": 0.6417910447761194,
+      "F1": 0.6013986013986014,
+      "tp": 43,
+      "n_pred": 76,
+      "n_gold": 67,
+      "items": 80,
+      "gold_pos": 58,
+      "false_alarm_rate": 0.45454545454545453,
+      "miss_rate": 0.06896551724137931
+     },
+     "Expiration Date": {
+      "P": 0.9344262295081968,
+      "R": 0.7916666666666666,
+      "F1": 0.8571428571428572,
+      "tp": 57,
+      "n_pred": 61,
+      "n_gold": 72,
+      "items": 80,
+      "gold_pos": 64,
+      "false_alarm_rate": 0.0,
+      "miss_rate": 0.140625
+     },
+     "Renewal Term": {
+      "P": 0.7647058823529411,
+      "R": 0.8387096774193549,
+      "F1": 0.7999999999999999,
+      "tp": 26,
+      "n_pred": 34,
+      "n_gold": 31,
+      "items": 80,
+      "gold_pos": 28,
+      "false_alarm_rate": 0.019230769230769232,
+      "miss_rate": 0.07142857142857142
+     },
+     "Notice Period To Terminate Renewal": {
+      "P": 0.8235294117647058,
+      "R": 0.875,
+      "F1": 0.8484848484848485,
+      "tp": 14,
+      "n_pred": 17,
+      "n_gold": 16,
+      "items": 80,
+      "gold_pos": 15,
+      "false_alarm_rate": 0.03076923076923077,
+      "miss_rate": 0.13333333333333333
+     },
+     "Governing Law": {
+      "P": 0.9324324324324325,
+      "R": 0.9857142857142858,
+      "F1": 0.9583333333333333,
+      "tp": 69,
+      "n_pred": 74,
+      "n_gold": 70,
+      "items": 80,
+      "gold_pos": 67,
+      "false_alarm_rate": 0.07692307692307693,
+      "miss_rate": 0.0
+     },
+     "Termination For Convenience": {
+      "P": 0.8461538461538461,
+      "R": 0.7096774193548387,
+      "F1": 0.7719298245614036,
+      "tp": 22,
+      "n_pred": 26,
+      "n_gold": 31,
+      "items": 80,
+      "gold_pos": 25,
+      "false_alarm_rate": 0.01818181818181818,
+      "miss_rate": 0.12
+     },
+     "Anti-Assignment": {
+      "P": 0.7307692307692307,
+      "R": 0.8085106382978723,
+      "F1": 0.7676767676767676,
+      "tp": 76,
+      "n_pred": 104,
+      "n_gold": 94,
+      "items": 80,
+      "gold_pos": 53,
+      "false_alarm_rate": 0.2222222222222222,
+      "miss_rate": 0.03773584905660377
+     },
+     "Change Of Control": {
+      "P": 0.7222222222222222,
+      "R": 0.5531914893617021,
+      "F1": 0.6265060240963856,
+      "tp": 26,
+      "n_pred": 36,
+      "n_gold": 47,
+      "items": 80,
+      "gold_pos": 20,
+      "false_alarm_rate": 0.05,
+      "miss_rate": 0.15
+     },
+     "Cap On Liability": {
+      "P": 0.7282608695652174,
+      "R": 0.7701149425287356,
+      "F1": 0.7486033519553073,
+      "tp": 67,
+      "n_pred": 92,
+      "n_gold": 87,
+      "items": 80,
+      "gold_pos": 41,
+      "false_alarm_rate": 0.02564102564102564,
+      "miss_rate": 0.04878048780487805
+     },
+     "Uncapped Liability": {
+      "P": 0.5833333333333334,
+      "R": 0.6086956521739131,
+      "F1": 0.5957446808510638,
+      "tp": 14,
+      "n_pred": 24,
+      "n_gold": 23,
+      "items": 80,
+      "gold_pos": 15,
+      "false_alarm_rate": 0.06153846153846154,
+      "miss_rate": 0.3333333333333333
+     },
+     "Minimum Commitment": {
+      "P": 0.7555555555555555,
+      "R": 0.5074626865671642,
+      "F1": 0.6071428571428571,
+      "tp": 34,
+      "n_pred": 45,
+      "n_gold": 67,
+      "items": 80,
+      "gold_pos": 27,
+      "false_alarm_rate": 0.018867924528301886,
+      "miss_rate": 0.2222222222222222
+     },
+     "Exclusivity": {
+      "P": 0.7317073170731707,
+      "R": 0.46153846153846156,
+      "F1": 0.5660377358490567,
+      "tp": 30,
+      "n_pred": 41,
+      "n_gold": 65,
+      "items": 80,
+      "gold_pos": 28,
+      "false_alarm_rate": 0.0,
+      "miss_rate": 0.25
+     },
+     "Audit Rights": {
+      "P": 0.6222222222222222,
+      "R": 0.6746987951807228,
+      "F1": 0.6473988439306358,
+      "tp": 56,
+      "n_pred": 90,
+      "n_gold": 83,
+      "items": 80,
+      "gold_pos": 32,
+      "false_alarm_rate": 0.020833333333333332,
+      "miss_rate": 0.0625
+     }
+    },
+    "per_group": {
+     "header": {
+      "P": 0.804140127388535,
+      "R": 0.8617747440273038,
+      "F1": 0.8319604612850082,
+      "tp": 505,
+      "n_pred": 628,
+      "n_gold": 586,
+      "items": 320,
+      "gold_pos": 287,
+      "false_alarm_rate": 0.5454545454545454,
+      "miss_rate": 0.03832752613240418
+     },
+     "clause": {
+      "P": 0.7624223602484472,
+      "R": 0.7157434402332361,
+      "F1": 0.7383458646616542,
+      "tp": 491,
+      "n_pred": 644,
+      "n_gold": 686,
+      "items": 960,
+      "gold_pos": 415,
+      "false_alarm_rate": 0.03853211009174312,
+      "miss_rate": 0.10361445783132531
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    },
+    "contracts": 80
+   },
+   "contract_verbatim": {
+    "per_category": {
+     "Document Name": {
+      "P": 0.8809523809523809,
+      "R": 0.9135802469135802,
+      "F1": 0.8969696969696969,
+      "tp": 74,
+      "n_pred": 84,
+      "n_gold": 81,
+      "items": 80,
+      "gold_pos": 80,
+      "false_alarm_rate": null,
+      "miss_rate": 0.0125
+     },
+     "Parties": {
+      "P": 0.8441558441558441,
+      "R": 0.8831521739130435,
+      "F1": 0.8632138114209827,
+      "tp": 325,
+      "n_pred": 385,
+      "n_gold": 368,
+      "items": 80,
+      "gold_pos": 80,
+      "false_alarm_rate": null,
+      "miss_rate": 0.025
+     },
+     "Agreement Date": {
+      "P": 0.7625,
+      "R": 0.8714285714285714,
+      "F1": 0.8133333333333334,
+      "tp": 61,
+      "n_pred": 80,
+      "n_gold": 70,
+      "items": 80,
+      "gold_pos": 69,
+      "false_alarm_rate": 0.7272727272727273,
+      "miss_rate": 0.057971014492753624
+     },
+     "Effective Date": {
+      "P": 0.5657894736842105,
+      "R": 0.6417910447761194,
+      "F1": 0.6013986013986014,
+      "tp": 43,
+      "n_pred": 76,
+      "n_gold": 67,
+      "items": 80,
+      "gold_pos": 58,
+      "false_alarm_rate": 0.45454545454545453,
+      "miss_rate": 0.06896551724137931
+     },
+     "Expiration Date": {
+      "P": 0.9344262295081968,
+      "R": 0.7916666666666666,
+      "F1": 0.8571428571428572,
+      "tp": 57,
+      "n_pred": 61,
+      "n_gold": 72,
+      "items": 80,
+      "gold_pos": 64,
+      "false_alarm_rate": 0.0,
+      "miss_rate": 0.140625
+     },
+     "Renewal Term": {
+      "P": 0.7647058823529411,
+      "R": 0.8387096774193549,
+      "F1": 0.7999999999999999,
+      "tp": 26,
+      "n_pred": 34,
+      "n_gold": 31,
+      "items": 80,
+      "gold_pos": 28,
+      "false_alarm_rate": 0.019230769230769232,
+      "miss_rate": 0.07142857142857142
+     },
+     "Notice Period To Terminate Renewal": {
+      "P": 0.8235294117647058,
+      "R": 0.875,
+      "F1": 0.8484848484848485,
+      "tp": 14,
+      "n_pred": 17,
+      "n_gold": 16,
+      "items": 80,
+      "gold_pos": 15,
+      "false_alarm_rate": 0.03076923076923077,
+      "miss_rate": 0.13333333333333333
+     },
+     "Governing Law": {
+      "P": 0.9324324324324325,
+      "R": 0.9857142857142858,
+      "F1": 0.9583333333333333,
+      "tp": 69,
+      "n_pred": 74,
+      "n_gold": 70,
+      "items": 80,
+      "gold_pos": 67,
+      "false_alarm_rate": 0.07692307692307693,
+      "miss_rate": 0.0
+     },
+     "Termination For Convenience": {
+      "P": 0.875,
+      "R": 0.6774193548387096,
+      "F1": 0.7636363636363636,
+      "tp": 21,
+      "n_pred": 24,
+      "n_gold": 31,
+      "items": 80,
+      "gold_pos": 25,
+      "false_alarm_rate": 0.01818181818181818,
+      "miss_rate": 0.16
+     },
+     "Anti-Assignment": {
+      "P": 0.7281553398058253,
+      "R": 0.7978723404255319,
+      "F1": 0.7614213197969544,
+      "tp": 75,
+      "n_pred": 103,
+      "n_gold": 94,
+      "items": 80,
+      "gold_pos": 53,
+      "false_alarm_rate": 0.2222222222222222,
+      "miss_rate": 0.05660377358490566
+     },
+     "Change Of Control": {
+      "P": 0.7142857142857143,
+      "R": 0.5319148936170213,
+      "F1": 0.6097560975609756,
+      "tp": 25,
+      "n_pred": 35,
+      "n_gold": 47,
+      "items": 80,
+      "gold_pos": 20,
+      "false_alarm_rate": 0.05,
+      "miss_rate": 0.15
+     },
+     "Cap On Liability": {
+      "P": 0.7282608695652174,
+      "R": 0.7701149425287356,
+      "F1": 0.7486033519553073,
+      "tp": 67,
+      "n_pred": 92,
+      "n_gold": 87,
+      "items": 80,
+      "gold_pos": 41,
+      "false_alarm_rate": 0.02564102564102564,
+      "miss_rate": 0.04878048780487805
+     },
+     "Uncapped Liability": {
+      "P": 0.5833333333333334,
+      "R": 0.6086956521739131,
+      "F1": 0.5957446808510638,
+      "tp": 14,
+      "n_pred": 24,
+      "n_gold": 23,
+      "items": 80,
+      "gold_pos": 15,
+      "false_alarm_rate": 0.06153846153846154,
+      "miss_rate": 0.3333333333333333
+     },
+     "Minimum Commitment": {
+      "P": 0.7555555555555555,
+      "R": 0.5074626865671642,
+      "F1": 0.6071428571428571,
+      "tp": 34,
+      "n_pred": 45,
+      "n_gold": 67,
+      "items": 80,
+      "gold_pos": 27,
+      "false_alarm_rate": 0.018867924528301886,
+      "miss_rate": 0.2222222222222222
+     },
+     "Exclusivity": {
+      "P": 0.725,
+      "R": 0.4461538461538462,
+      "F1": 0.5523809523809524,
+      "tp": 29,
+      "n_pred": 40,
+      "n_gold": 65,
+      "items": 80,
+      "gold_pos": 28,
+      "false_alarm_rate": 0.0,
+      "miss_rate": 0.2857142857142857
+     },
+     "Audit Rights": {
+      "P": 0.6292134831460674,
+      "R": 0.6746987951807228,
+      "F1": 0.6511627906976744,
+      "tp": 56,
+      "n_pred": 89,
+      "n_gold": 83,
+      "items": 80,
+      "gold_pos": 32,
+      "false_alarm_rate": 0.020833333333333332,
+      "miss_rate": 0.0625
+     }
+    },
+    "per_group": {
+     "header": {
+      "P": 0.8048,
+      "R": 0.8583617747440273,
+      "F1": 0.8307184145334434,
+      "tp": 503,
+      "n_pred": 625,
+      "n_gold": 586,
+      "items": 320,
+      "gold_pos": 287,
+      "false_alarm_rate": 0.5454545454545454,
+      "miss_rate": 0.03832752613240418
+     },
+     "clause": {
+      "P": 0.7633228840125392,
+      "R": 0.7099125364431487,
+      "F1": 0.7356495468277945,
+      "tp": 487,
+      "n_pred": 638,
+      "n_gold": 686,
+      "items": 960,
+      "gold_pos": 415,
+      "false_alarm_rate": 0.03853211009174312,
+      "miss_rate": 0.1108433734939759
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    },
+    "contracts": 80
+   }
+  },
+  "heldout": {
+   "health": {
+    "chunks": 0,
+    "coverage": 0.0
+   },
+   "chunk": {
+    "per_category": {},
+    "per_group": {
+     "clause": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    }
+   },
+   "chunk_verbatim": {
+    "per_category": {},
+    "per_group": {
+     "clause": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    }
+   },
+   "contract": {
+    "per_category": {},
+    "per_group": {
+     "header": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "clause": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    },
+    "contracts": 0
+   },
+   "contract_verbatim": {
+    "per_category": {},
+    "per_group": {
+     "header": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "clause": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     },
+     "heldout": {
+      "P": null,
+      "R": null,
+      "F1": null,
+      "tp": 0,
+      "n_pred": 0,
+      "n_gold": 0,
+      "items": 0,
+      "gold_pos": 0,
+      "false_alarm_rate": null,
+      "miss_rate": null
+     }
+    },
+    "contracts": 0
+   }
+  }
+ }
+}
