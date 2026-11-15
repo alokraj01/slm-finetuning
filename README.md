@@ -100,10 +100,12 @@ merged per contract before scoring.
 
 | | Base Qwen3-4B | LoRA r16 |
 |---|---|---|
-| Clause F1, contract level | _final number pending_ | 0.738 |
-| Header F1, contract level | _final number pending_ | 0.832 |
-| Clause F1, chunk level | _final number pending_ | 0.743 |
-| Strict JSON / verbatim quotes | _pending_ | 99.9% / 99.3% |
+| Clause F1, contract level | 0.423 | **0.738** |
+| Header F1, contract level | 0.529 | **0.832** |
+| Clause F1, chunk level | 0.442 | **0.743** |
+| False alarms (quotes where there is no clause) | 5.9% | **0.8%** |
+| Strict JSON / verbatim quotes | 99.5% / 89.6% | 99.9% / 99.3% |
+| Held-out categories F1 (never trained) | TBD | TBD |
 
 The held-out categories and the r4 ablation are still running. Full tables, base-vs-fine-tuned examples and the error
 analysis are in `notebooks/04_evaluate.ipynb` and the write-up.

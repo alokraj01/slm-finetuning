@@ -4,125 +4,87 @@
 
 ## 1. Problem & Domain
 
-**Problem.** Procurement and legal teams review every supplier contract for the same risk terms: renewal traps, termination
-rights, assignment and change of control, liability caps, minimum commitments, exclusivity and audit rights. Today this is
-manual reading of long, inconsistently drafted documents.
+Procurement and legal teams check every supplier contract for the same risk terms: renewal traps, termination rights,
+assignment and change of control, liability caps, minimum commitments, exclusivity and audit rights. Today this is
+manual reading of long, inconsistently drafted documents. **Task:** the input is a contract excerpt plus the requested
+categories with their definitions. The output is JSON `{category: [verbatim quotes]}`, with `[]` when a category is
+absent, so every answer can be checked against the source.
 
-**Task.** The input is a contract excerpt plus a list of requested categories, each with its definition. The output is
-JSON `{category: [verbatim quotes]}`, with `[]` when a category is absent. Every answer is a quote that can be checked
-against the source, so a reviewer can audit it in seconds.
+**Why fine-tuning, not prompting, few-shot or RAG?**
 
-**Why Track B (fine-tuning), not prompting, few-shot or RAG?**
-- **What needs weight adaptation.** The model must learn the CUAD annotation conventions: where a span starts and ends,
-  "Cap On Liability" vs "Uncapped Liability", and when to answer `[]`. These conventions are encoded in 13.8k
-  lawyer-labelled spans, not in any prompt we could write.
-- **Few-shot** is too expensive. One example costs about 1.7k tokens (one chunk), and covering 16 categories would
-  multiply the prompt length and latency several times over.
-- **RAG** solves a different problem: finding the right document. Here the excerpt is already given, and retrieval
-  does not teach span selection.
-- **Deployment fit.** Contracts are confidential, so a 4B model running on-prem is the realistic target.
-- **Evidence.** The base model, given the same prompt, is the zero-shot baseline in Section 4.
+- **What needs weight adaptation.** The model must learn CUAD's annotation conventions: where a clause starts and ends,
+  Cap vs Uncapped Liability, when to answer `[]`. These conventions live in 13.8k lawyer-labelled spans, not in any
+  prompt. Given the same prompt and definitions, the zero-shot base model reaches a clause F1 of only 0.42.
+- **Few-shot** costs about 1.7k tokens per example, multiplied across 16 categories. **RAG** finds the right
+  *document*, but the excerpt is already given here. Contracts are confidential, so a 4B on-prem model is realistic.
 
-## 2. Data Pipeline
+## 2. Data Pipeline & Algorithm Decisions
 
 | Step | What and why |
 |---|---|
-| **Source** | **CUAD v1** (The Atticus Project, Zenodo 4595826, CC BY 4.0): 510 real commercial contracts from SEC EDGAR, 41 categories, 13,823 expert-annotated spans. Real contracts with expert labels fit S2 directly. **Rejected:** LEDGAR (provision classification, where a DeBERTa classifier would beat an SLM); ContractNLI (NDAs only, 17 fixed hypotheses); synthetic data (circular evaluation). |
-| **Labels** | Taken from the SQuAD-style JSON with exact character offsets. `master_clauses.csv` was not used because it merges fragments with `<omitted>`. |
-| **Cleaning** | Whitespace normalization (−3.75% of characters) with an offset map, so every gold span stays an exact substring of its chunk. A check asserts this for every training quote. |
-| **Chunking** | Chunks of at most 6,000 characters with at least 800 characters of overlap, cut at paragraph, then sentence, then line breaks. Only 2 of 8,730 trained spans never fit whole in a single chunk. If a chunk boundary cuts a span, that category is **not requested** for that chunk (33 cases), so the model is never taught that half a clause means "absent". |
-| **Categories** | **16 trained:** 4 header fields (Document Name, Parties, Agreement Date, Effective Date) and 12 risk clauses. **3 held out** and never requested in training (Insurance, Post-Termination Services, Non-Compete); these test generalization. The other 22 are excluded: they are rare (<10% of contracts), defined relative to another category, IP/licensing-specific, or out of scope. |
-| **Formatting** | Chat format (system, user, assistant). Each example requests all positive categories plus random negatives (k ~ U[4,16]) in **shuffled order**, so the model must read the definitions rather than memorize a fixed schema. 50% of chunks with no positive category are kept, so the model learns to abstain. |
-| **Split** | Split **by contract** (never by chunk), seed 42, stratified by contract type: **350 / 80 / 80** contracts for train / validation / test. The test set stays untouched until the final evaluation, and the notebook asserts that no test contract leaks into train or validation. |
-| **Counts** | **2,997 train examples** (1,028 with every category empty) and 649 validation examples. The evaluation sets cover 834 validation and 822 test chunks. The build is deterministic (`train_sha256_16 = 2cedaea7f8f74e2d`). |
-
-## 3. Approach & Algorithm Decisions
+| **Source** | **CUAD v1**: 510 SEC-EDGAR contracts, 41 categories, 13,823 expert spans (CC BY 4.0). *Rejected:* LEDGAR (a classification task, where DeBERTa would beat an SLM), ContractNLI (NDAs only), synthetic data (circular evaluation). |
+| **Cleaning, chunking** | Labels come from the JSON character offsets. Whitespace is normalized with an offset map, and a check asserts that every gold quote is an exact substring of its chunk. Chunks are ≤ 6,000 characters with ≥ 800 overlap, cut at paragraph or sentence breaks. A category cut by a chunk boundary is not requested for that chunk, so half a clause is never labelled "absent". |
+| **Categories** | **16 trained** (4 header fields and 12 risk clauses). **3 held out**, never requested in training (Insurance, Post-Termination Services, Non-Compete), to test generalization. The other 22 are rare, defined relative to another category, or IP-specific. |
+| **Format, split** | Each example requests the positive categories plus random negatives in **shuffled order**, so there is no fixed schema to memorize. 34% of examples are all-empty, so the model learns to abstain. Split **by contract** (seeded, stratified by type): 350 / 80 / 80, giving **2,997 training examples**, 649 validation examples and 822 test chunks. |
 
 | Decision | Choice | Rejected alternatives and why |
 |---|---|---|
-| **Base model** | **Qwen3-4B-Instruct-2507**: dense, Apache-2.0 licence, no thinking mode (no `<think>` tokens), and fits unquantized in bf16 (8 GB) on a 48 GB Apple M5 Pro | **Qwen3-8B:** about 2× compute (≈12 h per epoch on this hardware); the planned step up if 4B underfits. **Qwen3.5:** hybrid linear attention, with open mlx-lm LoRA bugs at the time. **Llama-3.x / Gemma:** more restrictive licences (Gemma is gated). **Phi-4-mini:** similar size, with no advantage for this task. |
-| **PEFT method** | **LoRA on a bf16 base** | **Full fine-tuning:** weights plus AdamW states ≈ 64 GB, which doesn't fit, and it overfits more easily on 3k examples. **QLoRA:** saves memory we don't need, and 4-bit rounding adds noise to the base-vs-fine-tuned comparison. **DoRA:** slower per step, with gains reported mainly at low rank; kept as an ablation. **IA³:** not supported in mlx-lm, and rescaling-only adapters have too little capacity to learn a new output behaviour. |
-| **Rank / α / modules** | **r = 16, α = 32** (scale 2.0), dropout 0.05, on **all 7 linear projections** (`q,k,v,o,gate,up,down`) in **all 36 layers** → 33.0M trainable parameters (0.82%) | **r = 8:** may underfit 16 category boundaries. **r = 32/64:** more capacity than 3k examples justify, with more memorization risk. **Attention-only (`q,v`):** QLoRA (Dettmers 2023) found that adapting all linear layers closes the gap to full fine-tuning. |
-| **Loss** | `mask_prompt`: loss on the answer tokens only (9.1% of all tokens) | **Loss on the full sequence:** dominated by copying contract text. |
-| **Optimization** | AdamW (weight decay 0.01), LR 1e-4, 5% warmup, cosine decay to 1e-5, effective batch 8 (2 × 4 accumulation) | **LR 2e-4:** faster, but more forgetting risk. **Constant LR:** a noisier end of training. |
-| **Budget** | **1 epoch** (375 updates). Measured ≈13.5 s/iteration → ≈6 h | **2 epochs (≈13 h):** the first thing to revisit if validation loss is still falling. |
-| **Sequence length** | 5,632 tokens, derived from measured lengths (longest example 5,389); the trainer **refuses to truncate** | **Default 2,048:** would silently truncate most examples. |
-| **Stack** | MLX-LM 0.32.2, run locally | **Colab T4 + Unsloth:** session limits, and 16 GB of VRAM would force QLoRA. |
-| **Metric** | Span P/R/F1 with Jaccard overlap (as in the CUAD paper) at **chunk** level (diagnostic) and **contract** level (headline: chunk outputs merged and deduplicated). Header fields are scored at contract level only. Also JSON validity and verbatim rate. | **Exact match:** penalizes harmless boundary differences. **ROUGE/BLEU:** don't penalize a correct quote under the wrong category. |
+| **Base model** | **Qwen3-4B-Instruct-2507**: dense, Apache-2.0, no thinking tokens, fits in bf16 on a 48 GB M5 Pro | **Qwen3-8B:** 2× compute; the planned step up. **Qwen3.5:** hybrid attention, with open mlx-lm LoRA bugs. **Llama / Gemma:** more restrictive or gated licences. |
+| **PEFT** | **LoRA on a bf16 base** | **Full fine-tuning:** ≈ 64 GB with optimizer states, and overfits 3k examples. **QLoRA:** adds 4-bit noise, and the memory saving is not needed. **IA³:** too little capacity. |
+| **r / α / modules** | **r = 16, α = 32**, all 7 linear projections in all 36 layers (33M parameters, 0.8%) | **Attention-only:** QLoRA (Dettmers 2023) shows all-linear LoRA closes the gap to full fine-tuning. **r ≥ 32:** more capacity than 3k examples justify. **r = 4:** run as an ablation. |
+| **Training** | Loss on the answer only, AdamW 1e-4 with cosine decay, effective batch 8, **1 epoch** (4.7 h), max sequence 5,632 (measured, never truncated) | **Full-sequence loss:** dominated by copying the contract. **2 epochs:** validation loss was already flat at the end (0.0256 → 0.0252). |
+| **Metric** | Span F1, Jaccard ≥ 0.5 (as in the CUAD paper). **Contract level** (merged chunks) is the headline. | **Exact match:** penalizes harmless boundary differences. **ROUGE:** rewards a right quote under the wrong category. |
 
-**Reproducibility fixes in `src/train_lora.py`**, each a silent failure in stock mlx-lm:
-1. Fail fast instead of truncating examples.
-2. Score validation on a fixed, seeded subset instead of re-sampling it each time.
-3. Log metrics through a callback (`run()` drops custom callbacks).
-4. Save `best/` inside the validation callback, because stock checkpoints are one step off the scored weights.
+`src/train_lora.py` fixes four silent mlx-lm failures (truncation, re-sampled validation, dropped callbacks, a
+one-step-off best checkpoint) and logs every hyperparameter per run.
 
-Every hyperparameter, library version, the git commit and the data hashes are written to `runs/<run>/run_info.json`.
+## 3. Results & Error Analysis
 
-## 4. Results & Error Analysis
+| Test set: 80 unseen contracts, same prompt | Base (zero-shot) | LoRA r16 | LoRA r4 |
+|---|---|---|---|
+| **Clause F1, contract level** (headline) | 0.423 | **0.738** | TBD |
+| Header F1, contract level | 0.529 | **0.832** | TBD |
+| Clause F1, chunk level | 0.442 | **0.743** | TBD |
+| **Held-out categories F1** (never trained) | TBD | TBD | TBD |
+| Clause precision / recall | 0.33 / 0.59 | 0.76 / 0.72 | TBD |
+| False alarms (quotes where there is no clause) | 5.9% | **0.8%** | TBD |
+| Verbatim quotes · strict JSON | 89.6% · 99.5% | 99.3% · 99.9% | TBD |
+| Trainable params · best validation loss | – | 33.0M · 0.0252 | 8.3M · TBD |
 
-> **Status:** the final training run (v2) is in progress, so the numbers below are placeholders. An earlier run (v1)
-> crashed with an out-of-memory error at iteration ≈500, probably because a second model was loaded on the shared GPU.
-> By then, validation loss had dropped from **0.638 → 0.035** at iteration 249.
+The largest gains are on judgement-heavy clauses: Uncapped Liability 0.04 → 0.60, Termination For Convenience
+0.34 → 0.77, Cap On Liability 0.37 → 0.75.
 
-| Metric (test set, 80 contracts) | Base (zero-shot) | Fine-tuned |
-|---|---|---|
-| Clause F1, contract level (headline) | TBD | TBD |
-| Header F1, contract level | TBD | TBD |
-| Clause F1, chunk level | TBD | TBD |
-| **Held-out categories F1** (never trained) | TBD | TBD |
-| JSON validity / verbatim rate | TBD | TBD |
-| False positives on chunks with no gold span | TBD | TBD |
+**Qualitative example (Minimum Commitment, same prompt).** Base: *"Shipper guarantees that during each Contract Year,
+Shipper will meet its Quarterly Volume Commitment"*. Fine-tuned: the same sentence plus *"…or, in the event it fails to
+do so, shall remit to MPL the Quarterly Deficiency Payment pursuant to Section 3.5."*, which is exactly the gold span.
+The base model drops the financial consequence, which is the part a reviewer needs.
 
-**Learned or memorized?**
-1. **Contract-disjoint split:** test contracts were never seen in training.
-2. **Held-out categories:** if F1 on Insurance, Post-Termination Services and Non-Compete holds or improves over the
-   base model, the model learned to *follow definitions*. If it drops, it overfitted to the 16 trained names.
-3. **Shuffled category subsets per example:** there is no fixed output schema to memorize.
+**Learned or memorized?** The test contracts are unseen, and category subsets are shuffled, so there is no fixed
+schema to memorize. The direct test is the held-out categories: F1 that holds or rises over the base model means the
+model learned to follow definitions. Result: TBD.
 
-**Qualitative comparison (base vs fine-tuned, same prompt):** TBD.
+**Where it fails:**
 
-**Known failure modes**
-- **Verbatim but wrong.** An early adapter returned `"on the date first above written"` as the Agreement Date. It is a
-  real substring, so the hallucination check passes. That check is necessary but not sufficient.
-- **CUAD label noise** (labels kept as published, not cleaned):
-  - one-off span-edge slips (1 of 521 Document Name labels);
-  - offsets point at the first occurrence of a repeated string (90% of 2,218 such cases), which is why header fields
-    are scored at contract level;
-  - role aliases ("Company") are labelled as Parties in only 37% of contracts, which caps the achievable Parties F1.
-- **Rare categories** (≈90–100 positive examples: Notice Period To Terminate Renewal, Uncapped Liability) are the
-  most likely to underfit.
-- **Chunk-local view.** The model cannot resolve cross-references such as "as defined in Section 2" when the definition
-  sits in another chunk.
+- **Misses, not false alarms.** Recall is lowest where drafting varies most: Exclusivity 0.46, Minimum Commitment 0.51,
+  Change Of Control 0.55.
+- **Span convention inflates the base model's gap.** `dated as of January 29, 2007 (the "Effective Date")` vs gold
+  `January 29, 2007` is acceptable to a lawyer, but Jaccard scores it as a miss.
+- **CUAD label noise.** Role aliases ("Company") are labelled as Parties in only 37% of contracts, which caps Parties F1.
+- **Verbatim but wrong.** `"on the date first above written"` returned as the Agreement Date passes the hallucination
+  check, so that check is necessary but not sufficient.
+- **Chunk-local view.** "As defined in Section 2" cannot be resolved when Section 2 is in another chunk.
 
-## 5. Production & Limitations
+## 4. Production & Limitations
 
-- **Hallucination mitigation:**
-  - every quote must be a verbatim substring of the input, otherwise it is dropped and flagged;
-  - output is validated against the JSON schema, with a retry on failure;
-  - training includes 34% all-empty examples, so the model learns to abstain;
-  - flagged or empty-but-expected results go to human review.
-- **Catastrophic forgetting (planned):** compare the base model with the adapter on a small general benchmark subset.
-  The adapter is detachable, so general traffic can always fall back to the base model with the adapter off.
-- **Deployment:** an 8 GB base model plus a 132 MB adapter.
-  - On GPU: vLLM multi-LoRA, so one base model serves several task adapters.
-  - On limited hardware: a 4-bit base via mlx-lm or llama.cpp.
-  - Chunks are independent, so a contract is processed as one parallel batch.
-- **Limitation before real deployment:**
-  - CUAD covers US public-company (EDGAR) contracts in English only; private supplier contracts, scanned PDFs (OCR)
-    and other jurisdictions are untested;
-  - only 16 categories are trained;
-  - label noise caps some scores.
+- **Hallucination control (built).** Every quote must be a verbatim substring of the input, otherwise it is dropped
+  and flagged (0.7% of fine-tuned quotes vs 10.4% for the base model, F1 unchanged). JSON is schema-checked, `[]`
+  lets the model abstain, and flagged outputs go to human review.
+- **Catastrophic forgetting.** Adapter on vs off on general prompts: TBD. The adapter is detachable, so general traffic
+  is served by the unmodified base model.
+- **Deployment.** An 8 GB base model plus a 132 MB adapter. vLLM multi-LoRA serves several task adapters on one base
+  model, and the chunks of a contract run as one parallel batch (≈ 4.6 s per chunk on an M5 Pro laptop).
+- **Limitation.** CUAD is US public-company contracts in English only. Private supplier paper, scanned PDFs (OCR),
+  other jurisdictions and untrained categories are untested. A pilot on in-house contracts with lawyer review is
+  needed before relying on the 0.74 F1.
 
-  A pilot on in-house contracts with lawyer review is required.
-
-## Reproduce
-
-```bash
-uv venv .venv -p 3.12 && uv pip install -r requirements.txt   # pinned versions
-# download CUAD_v1.zip from Zenodo 4595826 (md5 c38f490a984420b8a62600db401fafd5) into data/raw/cuad_v1/
-python -m src.build_dataset                                    # deterministic dataset build (seed 42)
-python -m pytest                                               # 27 pipeline tests
-python -m src.train_lora --config configs/qwen3-4b-lora-r16.yaml
-```
-
-*Data: CUAD v1, Hendrycks et al., NeurIPS 2021 Datasets & Benchmarks (arXiv:2103.06268), CC BY 4.0.*
+*Code: github.com/alokraj01/slm-finetuning · Data: CUAD v1 (Hendrycks et al., 2021), CC BY 4.0*
